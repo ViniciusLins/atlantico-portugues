@@ -13,6 +13,8 @@ group :development, :test do
     gem 'sqlite3', '1.3.10'
 
     gem 'rspec-rails', '2.9.0'
+    # Needed by rspec-rails works properly
+    gem 'test-unit'
 
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
     gem 'byebug', '3.5.1'
