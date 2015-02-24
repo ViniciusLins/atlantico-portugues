@@ -10,7 +10,9 @@ gem 'rails', '4.2.0'
 
 group :development, :test do
     # Use sqlite3 as the database for Active Record
-    gem 'sqlite3', '1.3.10'
+    # gem 'sqlite3', '1.3.10'
+
+    gem 'pg'
 
     gem 'rspec-rails', '2.9.0'
     # Needed by rspec-rails works properly
@@ -56,6 +58,6 @@ group :test do
     gem 'capybara', '1.1.2'
 end
 
-group :production do
-    gem 'pg', '0.18.1'
-end
+#group :prodUction do
+#    gem 'pg'
+#end
