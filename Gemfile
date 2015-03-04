@@ -5,6 +5,10 @@ ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
+# Twitter bootstrap gem
+gem 'bootstrap-sass', '2.0.0'
+#gem 'bootstrap-sass', '~> 3.3.3'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -30,7 +34,7 @@ end
 
 group :assets do
     # Use SCSS for stylesheets
-    gem 'sass-rails', '5.0.0'
+    gem 'sass-rails', '4.0.3'
     # Use Uglifier as compressor for JavaScript assets
     gem 'uglifier', '2.7.0'
     # Use CoffeeScript for .coffee assets and views
