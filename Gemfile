@@ -75,5 +75,6 @@ group :test do
 end
 
 group :production do
+  # Need add this gem to asset pipeline works as expected in heroku server
   gem 'rails_12factor'
 end
