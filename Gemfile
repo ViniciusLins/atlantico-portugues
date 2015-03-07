@@ -22,6 +22,9 @@ group :development, :test do
     # Needed by rspec-rails works properly
     gem 'test-unit'
 
+    # Guard is a Gem for monitoring files changed
+    gem 'guard-rspec', '0.5.5'
+
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
     gem 'byebug', '3.5.1'
 
@@ -60,8 +63,15 @@ gem 'sdoc', '0.4.1', group: :doc
 
 group :test do
     gem 'capybara', '1.1.2'
+    gem 'rb-inotify', '~> 0.9'
+    # Commented this gem for guard use just tmux notification
+    # gem 'libnotify', '0.5.9'
+    # gem 'spork', '0.9.0'
+    # Change spork gem by this because spork gem not support rails 4
+    gem 'spork-rails', github: 'A-gen/spork-rails'
+    gem 'guard-spork', '1.5.0'
 end
 
-#group :prodUction do
+#group :production do
 #    gem 'pg'
 #end
