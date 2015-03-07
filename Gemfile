@@ -72,6 +72,6 @@ group :test do
     gem 'guard-spork', '1.5.0'
 end
 
-#group :production do
-#    gem 'pg'
-#end
+group :production do
+    gem 'pg'
+end
