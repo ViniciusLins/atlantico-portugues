@@ -12,11 +12,13 @@ gem 'bootstrap-sass', '2.0.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Database postgres
+gem 'pg', '0.18.1'
+
+
 group :development, :test do
     # Use sqlite3 as the database for Active Record
     # gem 'sqlite3', '1.3.10'
-
-    gem 'pg'
 
     gem 'rspec-rails', '2.9.0'
     # Needed by rspec-rails works properly
@@ -73,5 +75,4 @@ group :test do
 end
 
 group :production do
-    gem 'pg'
 end
