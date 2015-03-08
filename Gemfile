@@ -24,8 +24,13 @@ group :development, :test do
     # Needed by rspec-rails works properly
     gem 'test-unit'
 
+    gem 'guard-spork', '0.3.2'
     # Guard is a Gem for monitoring files changed
+    gem 'guard', '2.2.4'
     gem 'guard-rspec', '0.5.5'
+    # Change spork gem by this because spork gem not support rails 4
+    gem 'spork-rails', '4.0.0'  
+
 
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
     gem 'byebug', '3.5.1'
@@ -69,9 +74,6 @@ group :test do
     # Commented this gem for guard use just tmux notification
     # gem 'libnotify', '0.5.9'
     # gem 'spork', '0.9.0'
-    # Change spork gem by this because spork gem not support rails 4
-    gem 'spork-rails', github: 'A-gen/spork-rails'
-    gem 'guard-spork', '1.5.0'
 end
 
 group :production do
