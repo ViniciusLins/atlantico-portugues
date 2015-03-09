@@ -72,6 +72,10 @@ Spork.prefork do
       # automatically. This will be the default behavior in future versions of
       # rspec-rails.
       config.infer_base_class_for_anonymous_controllers = false
+
+      config.after :all do
+          ActiveRecord::Base.subclasses.each(&:delete_all)
+      end
     end
 end
 

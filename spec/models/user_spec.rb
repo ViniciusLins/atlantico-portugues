@@ -66,5 +66,25 @@ describe User do
     end
 
     it { @user_with_same_email.should_not be_valid }
+
+    describe "with case insensitive check" do
+      before do
+        @user_with_same_email.email.upcase!
+      end
+
+      it { @user_with_same_email.should_not be_valid }
+    end
   end
+
+  describe "email case need be downcase after save" do
+    before do
+      @mail = "FOOBAR3@FOO.COM"
+      @user_upcase = User.new(name: "Foo Bar 2", email: @mail)
+      @user_upcase.save
+    end
+
+
+    it{ @user_upcase.email.should eql @mail.downcase }
+  end
+
 end
