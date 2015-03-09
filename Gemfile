@@ -7,7 +7,8 @@ gem 'rails', '4.2.0'
 
 # Twitter bootstrap gem
 gem 'bootstrap-sass', '2.0.0'
-#gem 'bootstrap-sass', '~> 3.3.3'
+
+gem 'bcrypt-ruby', '3.1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
