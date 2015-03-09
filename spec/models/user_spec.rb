@@ -99,15 +99,14 @@ describe User do
     end
   end
 
-  describe "email case need be downcase after save" do
-    before do
-      @email = "FOOBAR3@FOO.COM"
-      @user_upcase = @user.dup 
-      @user_upcase.email = @email
-      @user_upcase.save
-    end
+  describe "email address with mixed case" do
+    let(:mixed_case_email) { "Foo@ExAmPLe.CoM" }
 
-    it{ @user_upcase.email.should == @email.downcase }
+    it "should be saved as all lower-case" do
+      @user.email = mixed_case_email
+      @user.save
+      @user.reload.email.should == mixed_case_email.downcase
+    end
   end
 
   describe "with a password that's too short" do
