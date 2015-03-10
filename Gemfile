@@ -8,10 +8,8 @@ gem 'rails', '4.2.0'
 # Twitter bootstrap gem
 gem 'bootstrap-sass', '2.0.0'
 
+# This gem is a used for encrypt password of user, by has_secure_password pattern
 gem 'bcrypt-ruby', '3.1.2'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Database postgres
 gem 'pg', '0.18.1'
@@ -74,6 +72,8 @@ gem 'sdoc', '0.4.1', group: :doc
 group :test do
     gem 'capybara', '1.1.2'
     gem 'rb-inotify', '~> 0.9'
+    gem 'factory_girl_rails', '1.4.0'
+    gem 'database_cleaner', '1.4.1'
     # Commented this gem for guard use just tmux notification
     # gem 'libnotify', '0.5.9'
     # gem 'spork', '0.9.0'

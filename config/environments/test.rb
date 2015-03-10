@@ -39,7 +39,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  #
+  
   #config.logger = Logger.new(STDOUT)
   #config.logger.level = Logger::ERROR
+
+  # Reduces BCrypt cost for improves time of test suit.
+  # Spped up tests by lowering BCrypt's cost function.
+  require 'bcrypt'
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
 end

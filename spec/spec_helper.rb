@@ -73,8 +73,23 @@ Spork.prefork do
       # rspec-rails.
       config.infer_base_class_for_anonymous_controllers = false
 
-      config.after :all do
-          ActiveRecord::Base.subclasses.each(&:delete_all)
+      # This is a way to clean database for rspec without use database cleaner
+      #config.after :all do
+      #    ActiveRecord::Base.subclasses.each(&:delete_all)
+      #end
+
+      # This code clean database for avoid conflicts betweens tests
+      config.before(:suite) do
+          DatabaseCleaner[:active_record].strategy = :transaction
+            DatabaseCleaner.clean_with(:truncation)
+      end
+
+      config.before(:each) do
+          DatabaseCleaner.start
+      end
+
+      config.after(:each) do
+          DatabaseCleaner.clean
       end
     end
 end
