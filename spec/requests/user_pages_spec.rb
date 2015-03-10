@@ -22,9 +22,14 @@ describe "User pages" do
     end
 
     describe "when submit an blank form" do
+      before { click_button submit }
+
       it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
+        expect {}.not_to change(User, :count)
       end
+
+      it { should have_selector('title', text: 'Sign up') }
+      it { should have_content('error') }
     end
 
     describe "when submit valid information" do
