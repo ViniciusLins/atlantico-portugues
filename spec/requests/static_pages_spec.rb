@@ -57,4 +57,11 @@ describe "Static pages" do
     click_link "sample app"
     should have_selector 'title', text: full_title('')
   end
+
+  it "should have the sign in/out links" do
+    visit root_path
+    should have_link('Sign in',      href: signin_path) 
+    should_not have_link('Sign out',      href: signout_path) 
+    should_not have_link('Users') 
+  end
 end
