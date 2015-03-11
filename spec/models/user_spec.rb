@@ -135,4 +135,9 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+
+  describe "when remember token is nil" do
+    let(:find) { User.find_by_remember_token(nil) }
+    it { find.should be_nil }
+  end
 end
