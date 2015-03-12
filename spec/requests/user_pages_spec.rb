@@ -14,9 +14,30 @@ describe "User pages" do
     it { should have_title('All users') }
     it { should have_selector('h1', text: 'All users') }
 
-    it "should list each user" do
-      User.paginate(page: 1).each do |user|
-        should have_selector('li', text: user.name)
+    describe "pagination" do
+      it "should list each user for first page" do
+        User.paginate(page: 1).each do |user|
+          should have_selector('li', text: user.name)
+        end
+      end
+    end
+
+    describe "delete links" do
+
+      it { should_not have_link('delete') }
+
+      describe "as an admin user" do
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in admin
+          visit users_path
+        end
+
+        it { should have_link('delete', href: user_path(User.first)) }
+        it "should be able to delete another user" do
+          expect { click_link('delete') }.to change(User, :count).by(-1)
+        end
+        it { should_not have_link('delete', href: user_path(admin)) }
       end
     end
   end
@@ -116,6 +137,17 @@ describe "User pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { user.reload.name.should == new_name }
       specify { user.reload.email.should == new_email }
+    end
+  end
+
+  describe "when attempt to do a mass assignment in admin" do
+    let(:user) { FactoryGirl.create(:user, admin: false) }
+    before do
+      put "/users/#{user.id}?admin=1"
+    end
+
+    it "user should not be a admin" do
+      user.reload.should_not be_admin
     end
   end
 end
