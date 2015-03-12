@@ -11,6 +11,13 @@ gem 'bootstrap-sass', '2.0.0'
 # This gem is a used for encrypt password of user, by has_secure_password pattern
 gem 'bcrypt-ruby', '3.1.2'
 
+# Faker gem allow us, fill database with some users
+gem 'faker', '1.0.1'
+
+# Will paginate, enable pagination data
+gem 'will_paginate', '3.0.6'
+gem 'bootstrap-will_paginate', '0.0.6'
+
 # Database postgres
 gem 'pg', '0.18.1'
 

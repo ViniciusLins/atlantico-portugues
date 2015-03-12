@@ -3,6 +3,25 @@ require 'spec_helper'
 describe "User pages" do
   subject { page }
 
+  describe "index" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before(:each) do
+      sign_in user
+      visit users_path
+    end
+
+    it { should have_title('All users') }
+    it { should have_selector('h1', text: 'All users') }
+
+    it "should list each user" do
+      User.paginate(page: 1).each do |user|
+        should have_selector('li', text: user.name)
+      end
+    end
+  end
+
+
   describe "signup page" do
     before { visit signup_path }
 
@@ -99,5 +118,4 @@ describe "User pages" do
       specify { user.reload.email.should == new_email }
     end
   end
-
 end
