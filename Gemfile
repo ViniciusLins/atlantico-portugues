@@ -6,7 +6,7 @@ ruby '2.2.0'
 gem 'rails', '4.2.0'
 
 # Twitter bootstrap gem
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass', '2.0.0'
 
 # This gem is a used for encrypt password of user, by has_secure_password pattern
 gem 'bcrypt-ruby', '3.1.2'
@@ -57,7 +57,7 @@ end
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.0.3'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '2.5.3'
+# gem 'turbolinks', '2.5.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '2.2.6'
 # bundle exec rake doc:rails generates the API under doc/api.

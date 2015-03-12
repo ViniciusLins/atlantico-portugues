@@ -3,6 +3,8 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$navbarBackground: $grayDarker !default;
+$navbarBackgroundHighlight: $grayDark !default;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
