@@ -53,6 +53,20 @@ describe "Authentication" do
           it { should have_link('Sign in',  href: signin_path) }
         end
       end
+
+      describe "when try sign-up other user" do
+        before { visit signup_path }
+        it "should be redirect to root path" do
+          should_not have_title('Sign up')
+        end
+      end
+
+      describe "when try create a user" do
+        it "should not create" do
+          post_attributes = FactoryGirl.attributes_for(:user)
+          expect { post users_path, user: post_attributes }.not_to change(User, :count)
+        end
+      end
     end
   end
 
@@ -76,6 +90,11 @@ describe "Authentication" do
 
             it "should render the desired protected page" do
               should have_title('Edit user')
+            end
+
+            describe "when attempt signing again" do
+              before { visit signin_path }
+              it { should_not have_title('Sign in') }              
             end
           end
         end
