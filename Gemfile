@@ -48,6 +48,10 @@ group :development, :test do
     gem 'spring', '1.3.1'
 
     gem 'annotate', '~> 2.4.1.beta'
+
+    # Generate uml schema from models 
+    # Obs: This gem require graphviz, so install this with: apt-get install graphviz
+    gem 'rails-erd'
 end
 
 group :assets do
