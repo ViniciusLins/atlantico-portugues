@@ -49,4 +49,7 @@ Rails.application.configure do
   silence_warnings do
     BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
   end
+
+  # Raise exception to unpermitted params
+  config.action_controller.action_on_unpermitted_parameters = :raise
 end
