@@ -40,4 +40,16 @@ describe "Micropost pages" do
       end
     end
   end
+
+  describe "micropost created by another user" do
+    before do 
+      other_user = FactoryGirl.create(:user) 
+      FactoryGirl.create(:micropost, user: other_user) 
+      visit root_path
+    end
+
+    it "should not have delete link" do
+      should_not have_link("delete") 
+    end
+  end
 end
