@@ -20,48 +20,48 @@ describe "Static pages" do
     it { should_not have_button('Sign up now!') }
   end
 
-  describe "Help page" do
+  describe "Ajuda page" do
     before { visit help_path }
 
-    let(:heading)     { 'Help' }
-    let(:page_title)  { 'Help' } 
+    let(:heading)     { 'Ajuda' }
+    let(:page_title)  { 'Ajuda' } 
     it_should_behave_like "all static_pages"
   end
 
-  describe "About page" do
+  describe "Sobre page" do
     before { visit about_path }
 
-    let(:heading)     { 'About Us' }
-    let(:page_title)  { 'About Us' } 
+    let(:heading)     { 'Sobre Nós' }
+    let(:page_title)  { 'Sobre Nós' } 
     it_should_behave_like "all static_pages"
   end
 
-  describe "Contact page" do
+  describe "Entre em contato page" do
     before { visit contact_path }
  
-    let(:heading)     { 'Contact' }
-    let(:page_title)  { 'Contact' } 
+    let(:heading)     { 'Entre em contato' }
+    let(:page_title)  { 'Entre em contato' } 
     it_should_behave_like "all static_pages"
   end
 
   it "should have the right links on the layout" do
     visit root_path
-    click_link "About"
-    should have_selector 'title', text: full_title('About Us')
-    click_link "Help"
-    should have_selector 'title', text: full_title('Help')
-    click_link "Contact"
-    should have_selector 'title', text: full_title('Contact')
+    click_link "Sobre"
+    should have_selector 'title', text: full_title('Sobre Nós')
+    click_link "Ajuda"
+    should have_selector 'title', text: full_title('Ajuda')
+    click_link "Entre em contato"
+    should have_selector 'title', text: full_title('Entre em contato')
     click_link "Home"
-    click_link "sample app"
+    click_link "atlântico português"
     should have_selector 'title', text: full_title('')
   end
 
   it "should have the sign in/out links" do
     visit root_path
-    should have_link('Sign in',      href: signin_path) 
-    should_not have_link('Sign out',      href: signout_path) 
-    should_not have_link('Users') 
+    should have_link('Entrar',      href: signin_path) 
+    should_not have_link('Sair',      href: signout_path) 
+    should_not have_link('Usuários') 
     should_not have_link('Páginas', href: pages_path) 
   end
 end
