@@ -1,13 +1,13 @@
 <% provide(:title, @page.title) %>
 <p>
-  <strong>Title:</strong>
+  <strong>Título:</strong>
   <%= @page.title %>
 </p>
 
 <p>
-  <strong>Body:</strong>
+  <strong>Texto:</strong>
   <%= @page.body %>
 </p>
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Editar', edit_page_path(@page) %> |
+<%= link_to 'Voltar', pages_path %>

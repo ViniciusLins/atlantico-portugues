@@ -15,6 +15,9 @@ describe "Pages" do
     it { should have_title('Páginas') }
     it { should have_selector('h1', text: 'Páginas') }
     it { should have_link("Nova página", href: new_page_path) } 
+    it { should have_link("Visualizar", href: page_path(mypage)) } 
+    it { should have_link("Editar",     href: edit_page_path(mypage)) } 
+    it { should have_link("Excluir") } 
     it { should have_content(mypage.title) }
     it { should have_content(mypage.body) }
   end
