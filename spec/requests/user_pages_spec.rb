@@ -67,7 +67,7 @@ describe "User pages" do
 
   describe "signup" do
     let(:admin) { FactoryGirl.create(:user, admin: true) }
-    let(:submit) { "Criar usuário" }
+    let(:submit) { I18n.t(:create_user) }
     before do
       sign_in admin
       visit signup_path 
@@ -92,10 +92,10 @@ describe "User pages" do
 
     describe "when submit valid information" do
       before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in I18n.t(:name),         with: "Example User"
+        fill_in I18n.t(:email),        with: "user@example.com"
+        fill_in I18n.t(:password),     with: "foobar"
+        fill_in I18n.t(:password_confirmation),   with: "foobar"
       end
 
       it "should create a user" do
@@ -129,13 +129,13 @@ describe "User pages" do
     end
 
     describe "page" do
-      it { should have_selector('h1',     text: 'Update your profile') }
-      it { should have_title('Edit user') }
+      it { should have_selector('h1',     text: I18n.t(:update_profile)) }
+      it { should have_title(I18n.t(:update_profile)) }
       it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do
-      before { click_button "Save changes" }
+      before { click_button I18n.t(:save_changes) }
 
       it { should have_error_message('') }
     end
@@ -145,9 +145,9 @@ describe "User pages" do
       let(:new_email) { "new@example.com" }
       before do
         fill_with_valid_information user
-        fill_in "Name",     with: new_name
-        fill_in "Email",    with: new_email
-        click_button "Save changes"
+        fill_in I18n.t(:name),     with: new_name
+        fill_in I18n.t(:email),    with: new_email
+        click_button I18n.t(:save_changes) 
       end
 
       it { should have_title(new_name) }

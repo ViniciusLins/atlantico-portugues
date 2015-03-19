@@ -162,6 +162,11 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+#bootsy-editor {
+  height: 400px;
+}
+
+
 #error_explanation {
   color: #600;
   ul {

@@ -9,4 +9,14 @@ module ApplicationHelper
             "#{base_title} | #{page_title}"
         end
     end
+
+    def build_flash(key, value)
+      type =  case key
+              when 'error'
+                "danger"
+              else
+                key
+              end
+      content_tag(:div, value, class: "alert alert-#{type}")
+    end
 end

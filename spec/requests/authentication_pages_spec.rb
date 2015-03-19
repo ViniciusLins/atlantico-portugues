@@ -82,13 +82,13 @@ describe "Authentication" do
 
           describe "after signing in" do
             before do
-              fill_in "Email",      with: user.email
-              fill_in "Password",   with: user.password
+              fill_in I18n.t(:email),      with: user.email
+              fill_in I18n.t(:password),   with: user.password
               click_button "Entrar"
             end
 
             it "should render the desired protected page" do
-              should have_title('Edit user')
+              should have_title(I18n.t(:update_profile))
             end
           end
         end

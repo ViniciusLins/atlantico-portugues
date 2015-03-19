@@ -3,17 +3,17 @@ include ApplicationHelper
 def sign_in(user)
   visit signin_path 
   fill_in "Email",      with: user.email
-  fill_in "Password",   with: user.password
+  fill_in "Senha",   with: user.password
   click_button "Entrar" 
   # Sign in when not using capybara as well
   cookies[:remember_token] = user.remember_token
 end
 
 def fill_with_valid_information(user)
-  fill_in "Name",       with: user.name
+  fill_in "Nome",       with: user.name
   fill_in "Email",      with: user.email
-  fill_in "Password",   with: user.password
-  fill_in "Confirm Password",   with: user.password_confirmation
+  fill_in "Senha",   with: user.password
+  fill_in "Confirmar senha",   with: user.password_confirmation
 end
 
 def invalid_email_addresses
@@ -26,7 +26,7 @@ end
 
 RSpec::Matchers.define :have_error_message do |message|
   match do |page|
-    page.should have_selector('div.alert.alert-error', text: message)
+    page.should have_selector('div.alert.alert-danger', text: message)
   end
 end
 

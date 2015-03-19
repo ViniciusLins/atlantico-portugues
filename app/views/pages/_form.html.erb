@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span6 offset3">
+  <div class=".col-md-6">
     <%= form_for(@page) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -7,9 +7,9 @@
         <%= f.text_field :title %>
 
         <%= f.label :body %><br>
-        <%= f.bootsy_area :body %>
+        <%= f.bootsy_area :body, id: "bootsy-editor" %>
 
-        <%= f.submit btn_name, class: "btn btn-large btn-primary" %>
+        <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
       <% end %>
   </div>
 </div>

@@ -55,7 +55,6 @@ describe "Pages" do
     describe "when submitting a valid form" do
       before do
         fill_in "Title",      with: "Help"
-        fill_in "Body",       with: "Bla Bla Bla"
       end
       it "should create a page" do
         expect { click_button "Criar página" }.to change(Page, :count).by(1)
@@ -102,7 +101,6 @@ describe "Pages" do
       let(:new_body) { "a" * 50 }
       before do
         fill_in "Title",      with: new_title 
-        fill_in "Body",       with: new_body 
         click_button btn_save
       end
 
