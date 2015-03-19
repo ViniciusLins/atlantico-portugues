@@ -14,6 +14,20 @@ describe "Authentication" do
   describe "signin" do
     before { visit signin_path }
 
+    describe "as admin user" do
+      let(:user) { FactoryGirl.create(:user, admin: true) }
+      before { sign_in user } 
+
+      describe "should have right links" do
+        it { should have_link('Páginas', href: pages_path) }
+        it { should have_link('Users',        href: users_path) }
+        it { should have_link('Profile',      href: user_path(user)) }
+        it { should have_link('Settings',     href: edit_user_path(user)) }
+        it { should have_link('Sign out',     href: signout_path) }
+        it { should_not have_link('Sign in',  href: signin_path) }
+      end
+    end
+
     describe "with invalid information" do
       before { click_button signin }
 
@@ -34,6 +48,7 @@ describe "Authentication" do
       it { should have_title(user.name) }
         
       describe "should have right links" do
+        it { should_not have_link('Páginas', href: pages_path) }
         it { should have_link('Users',        href: users_path) }
         it { should have_link('Profile',      href: user_path(user)) }
         it { should have_link('Settings',     href: edit_user_path(user)) }
@@ -45,6 +60,7 @@ describe "Authentication" do
         before { click_link "Sign out" }
         it { should have_link("Sign in") }
       end
+
     end
   end
 
@@ -87,6 +103,46 @@ describe "Authentication" do
           it { should have_title('Sign in') }
         end
       end
+
+      describe "in the pages controller" do
+        let(:mypage) { FactoryGirl.create(:page) }
+
+        describe "when visiting paginas page" do
+          before { visit pages_path }
+          it "should redirect to home" do
+            should_not have_title('Páginas')
+          end
+
+        end
+
+        describe "when visiting edit page" do
+          before { visit edit_page_path(mypage) }
+          it "should redirect to home" do
+            should_not have_title('Editar Página')
+          end
+        end
+
+        describe "when try destroy a page" do
+          before { delete page_path(mypage) }
+          specify "should redirect to home" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+
+        describe "when try create action a page" do
+          before { post pages_path }
+          specify "should redirect to home" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+
+        describe "when try update a page" do
+          before { put page_path(mypage) }
+          specify "should redirect to home" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+      end
     end
 
     describe "as wrong user" do
@@ -114,6 +170,45 @@ describe "Authentication" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { response.should redirect_to(root_path) }
+      end
+
+      describe "in the pages controller" do
+        let(:mypage) { FactoryGirl.create(:page) }
+
+        describe "when visiting paginas page" do
+          before { visit pages_path }
+          it "should redirect to home" do
+            should_not have_title('Páginas')
+          end
+        end
+
+        describe "when visiting edit page" do
+          before { visit edit_page_path(mypage) }
+          it "should redirect to home" do
+            should_not have_title('Editar Página')
+          end
+        end
+
+        describe "when try destroy a page" do
+          before { delete page_path(mypage) }
+          specify "should redirect to home" do
+           response.should redirect_to(root_path) 
+          end
+        end
+
+        describe "when try create action a page" do
+          before { post pages_path }
+          specify "should redirect to home" do
+           response.should redirect_to(root_path) 
+          end
+        end
+
+        describe "when try update a page" do
+          before { put page_path(mypage) }
+          specify "should redirect to home" do
+           response.should redirect_to(root_path) 
+          end
+        end
       end
     end
   end

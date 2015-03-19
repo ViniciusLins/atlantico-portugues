@@ -8,4 +8,9 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :page do
+    title "Home"
+    body  "Bem vindo ao Atlantico Portugues!"
+  end
 end
