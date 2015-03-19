@@ -1,5 +1,3 @@
-# Ruby on Rails Tutorial: sample application
+# Atlântico Portugues 
 
-This is the sample application for
-[*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
-by [Michael Hartl](http://michaelhartl.com/).
+This project intend to be a database for index history documents.
