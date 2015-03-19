@@ -18,6 +18,9 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.6'
 gem 'bootstrap-will_paginate', '0.0.6'
 
+# Rails erd gem to generate model ER
+gem 'rails-erd'
+
 # Database postgres
 gem 'pg', '0.18.1'
 
