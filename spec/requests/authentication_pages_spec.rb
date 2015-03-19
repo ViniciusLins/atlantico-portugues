@@ -55,6 +55,11 @@ describe "Authentication" do
 
       describe "in the Users controller" do
 
+        describe "when attempting to visit create user page" do
+          before { visit signup_path }
+          it { should have_title('Sign in') }
+        end
+
         describe "when attempting to visit a protected page" do
           before { visit edit_user_path(user) }
           it { should have_title('Sign in') }

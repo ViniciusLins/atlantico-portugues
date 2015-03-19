@@ -17,6 +17,7 @@ describe "Static pages" do
     it_should_behave_like "all static_pages"
 
     it { should_not have_selector('title', text: "| Home") }
+    it { should_not have_button('Sign up now!') }
   end
 
   describe "Help page" do
@@ -52,8 +53,6 @@ describe "Static pages" do
     click_link "Contact"
     should have_selector 'title', text: full_title('Contact')
     click_link "Home"
-    click_link "Sign up now!"
-    should have_selector 'title', text: full_title('Sign up')
     click_link "sample app"
     should have_selector 'title', text: full_title('')
   end

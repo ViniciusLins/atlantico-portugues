@@ -44,7 +44,11 @@ describe "User pages" do
 
 
   describe "signup page" do
-    before { visit signup_path }
+    let(:admin) { FactoryGirl.create(:user, admin: true) }
+    before do
+      sign_in admin
+      visit signup_path 
+    end
 
     it { should have_selector('h1',     text: 'Sign up') }
     it { should have_selector('title',  text: 'Sign up') }
@@ -52,8 +56,12 @@ describe "User pages" do
   end
 
   describe "signup" do
-    before { visit signup_path }
-    let(:submit) { "Create my account" }
+    let(:admin) { FactoryGirl.create(:user, admin: true) }
+    let(:submit) { "Create account" }
+    before do
+      sign_in admin
+      visit signup_path 
+    end
 
     describe "when visit page " do
       it "should not create a user" do
@@ -85,12 +93,12 @@ describe "User pages" do
       end
 
       describe "after saving the user" do
-        before { click_button submit }
         let(:user) { User.find_by_email("user@example.com") }
+        before { click_button submit }
 
-        it { should have_selector('title', text: user.name) }
-        it { should have_selector('div.alert.alert-success', text: "Welcome") }
-        it { should have_link('Sign out') }
+        it { should have_title(full_title('')) }
+        it { should_not have_title('title', text: user.name) }
+        it { should have_selector('div.alert.alert-success', text: "Usuário criado com sucesso!") }
       end
     end
   end

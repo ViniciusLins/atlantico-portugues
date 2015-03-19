@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :create, :new]
   before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
+  before_filter :admin_user, only: [:destroy, :create, :new]
 
   def new
     @user = User.new
@@ -10,9 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "Usuário criado com sucesso!"
+      redirect_to root_path 
     else
       render 'new'
     end
