@@ -5,24 +5,28 @@ ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
-# Twitter bootstrap gem
-gem 'bootstrap-sass', '2.0.0'
 
 # This gem is a used for encrypt password of user, by has_secure_password pattern
 gem 'bcrypt-ruby', '3.1.2'
 
 # Faker gem allow us, fill database with some users
 gem 'faker', '1.0.1'
+# Database postgres
+gem 'pg', '0.18.1'
 
+# ------------------------------------
+# INTERFACE GEMS
+# -----------------------------------
+# Twitter bootstrap gem
+gem 'bootstrap-sass', '3.0.0'
 # Will paginate, enable pagination data
 gem 'will_paginate', '3.0.6'
 gem 'bootstrap-will_paginate', '0.0.6'
+gem 'bootsy'
 
 # Rails erd gem to generate model ER
 gem 'rails-erd'
 
-# Database postgres
-gem 'pg', '0.18.1'
 
 
 group :development, :test do
