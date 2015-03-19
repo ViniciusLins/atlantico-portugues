@@ -1,6 +1,7 @@
-<h1>Editing Page</h1>
+<% provide( :title, 'Editar Página') %>
+<h1>Editar Página</h1>
 
-<%= render 'form' %>
+<%= render 'form', btn_name: "Salvar alterações" %>
 
 <%= link_to 'Show', @page %> |
 <%= link_to 'Back', pages_path %>

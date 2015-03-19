@@ -60,4 +60,46 @@ describe "Pages" do
     end
   end
 
+  describe "edit page" do
+    let(:admin) { FactoryGirl.create(:user, admin: true) }
+    let!(:mypage) { FactoryGirl.create(:page) }
+    let(:btn_save) { "Salvar alterações"}
+
+    before do
+      sign_in admin
+      visit edit_page_path(mypage)
+    end 
+
+    it { should have_title('Editar Página') }
+    it { should have_selector('h1', text: 'Editar Página') }
+    it { should have_button(btn_save) } 
+
+    describe "with invalid information" do
+      before do
+        fill_in "Title",  with: "  "
+        click_button btn_save
+      end
+
+      it { should have_title('Editar Página') }
+      it { should have_error_message('') }
+    end
+
+    describe "when submitting a valid form" do
+      let(:new_title) { "Help" }
+      let(:new_body) { "a" * 50 }
+      before do
+        fill_in "Title",      with: new_title 
+        fill_in "Body",       with: new_body 
+        click_button btn_save
+      end
+
+      specify { mypage.reload.title == new_title}
+      specify { mypage.reload.title == new_body}
+      it "should be redirect to show page" do 
+        should have_title(new_title) 
+      end
+    end
+  end
+
+
 end
