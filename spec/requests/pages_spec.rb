@@ -20,6 +20,12 @@ describe "Pages" do
     it { should have_link("Excluir") } 
     it { should have_content(mypage.title) }
     it { should have_content(mypage.body) }
+
+    describe "delete links" do
+      it "should be deleted page" do
+        expect { click_link "Excluir" }.to change(Page, :count).by(-1)
+      end
+    end
   end
 
   describe "create page" do
@@ -34,8 +40,7 @@ describe "Pages" do
     it { should have_title('Nova Página') }
     it { should have_selector('h1', text: 'Nova Página') }
     it { should have_button("Criar página") } 
-
-    it "should not create a page" do
+    it "should not create a page" do 
       expect { click_button "Criar página" }.not_to change(Page, :count)
     end
 
@@ -60,6 +65,11 @@ describe "Pages" do
         click_button "Criar página"
         should have_title('Help') 
       end
+      it "should show a success message" do
+        click_button "Criar página"
+        should have_selector('div.alert.alert-notice') 
+      end
+
     end
   end
 
@@ -101,8 +111,9 @@ describe "Pages" do
       it "should be redirect to show page" do 
         should have_title(new_title) 
       end
+      it "should show a success message" do
+        should have_selector('div.alert.alert-notice') 
+      end
     end
   end
-
-
 end

@@ -30,7 +30,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Página criada com sucesso!.' }
+        format.html { redirect_to @page, notice: 'Página criada com sucesso.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to @page, notice: 'Página atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to pages_url, notice: 'A página foi excluída com sucesso.' }
       format.json { head :no_content }
     end
   end
