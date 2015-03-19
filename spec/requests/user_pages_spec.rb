@@ -87,7 +87,7 @@ describe "User pages" do
       end
 
       it { should have_selector('title', text: 'Sign up') }
-      it { should have_content('error') }
+      it { should have_error_message('') }
     end
 
     describe "when submit valid information" do
