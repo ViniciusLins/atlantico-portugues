@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
     def home
+      @page = Page.find_by_title("Home")
     end
 
     def help
