@@ -60,14 +60,14 @@ describe "User pages" do
       visit signup_path 
     end
 
-    it { should have_selector('h1',     text: 'Sign up') }
-    it { should have_selector('title',  text: 'Sign up') }
+    it { should have_selector('h1',     text: 'Criar usuário') }
+    it { should have_selector('title',  text: 'Criar usuário') }
 
   end
 
   describe "signup" do
     let(:admin) { FactoryGirl.create(:user, admin: true) }
-    let(:submit) { "Create account" }
+    let(:submit) { "Criar usuário" }
     before do
       sign_in admin
       visit signup_path 
@@ -86,7 +86,7 @@ describe "User pages" do
         expect {}.not_to change(User, :count)
       end
 
-      it { should have_selector('title', text: 'Sign up') }
+      it { should have_selector('title', text: 'Criar usuário') }
       it { should have_error_message('') }
     end
 
@@ -152,7 +152,7 @@ describe "User pages" do
 
       it { should have_title(new_name) }
       it { should have_message('') }
-      it { should have_link('Sign out', href: signout_path) }
+      it { should have_link('Sair', href: signout_path) }
       specify { user.reload.name.should == new_name }
       specify { user.reload.email.should == new_email }
     end

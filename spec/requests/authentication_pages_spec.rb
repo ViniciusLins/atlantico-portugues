@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe "Authentication" do
   subject { page }
-  let(:signin) { "Sign in" }
+  let(:signin) { "Entrar" }
 
   describe "signin page" do
     before { visit signin_path }
 
-    it { should have_selector('h1',     text: 'Sign in') }
-    it { should have_title('Sign in') }
+    it { should have_selector('h1',     text: 'Entrar') }
+    it { should have_title('Entrar') }
   end
 
   describe "signin" do
@@ -20,18 +20,18 @@ describe "Authentication" do
 
       describe "should have right links" do
         it { should have_link('Páginas', href: pages_path) }
-        it { should have_link('Users',        href: users_path) }
-        it { should have_link('Profile',      href: user_path(user)) }
-        it { should have_link('Settings',     href: edit_user_path(user)) }
-        it { should have_link('Sign out',     href: signout_path) }
-        it { should_not have_link('Sign in',  href: signin_path) }
+        it { should have_link('Usuários',        href: users_path) }
+        it { should have_link('Perfil',      href: user_path(user)) }
+        it { should have_link('Configurações',     href: edit_user_path(user)) }
+        it { should have_link('Sair',     href: signout_path) }
+        it { should_not have_link('Entrar',  href: signin_path) }
       end
     end
 
     describe "with invalid information" do
       before { click_button signin }
 
-      it { should have_title('Sign in') }
+      it { should have_title('Entrar') }
       it { should have_error_message('Invalid') }
 
       describe "after visiting another page" do
@@ -49,16 +49,16 @@ describe "Authentication" do
         
       describe "should have right links" do
         it { should_not have_link('Páginas', href: pages_path) }
-        it { should have_link('Users',        href: users_path) }
-        it { should have_link('Profile',      href: user_path(user)) }
-        it { should have_link('Settings',     href: edit_user_path(user)) }
-        it { should have_link('Sign out',     href: signout_path) }
-        it { should_not have_link('Sign in',  href: signin_path) }
+        it { should have_link('Usuários',        href: users_path) }
+        it { should have_link('Perfil',      href: user_path(user)) }
+        it { should have_link('Configurações',     href: edit_user_path(user)) }
+        it { should have_link('Sair',     href: signout_path) }
+        it { should_not have_link('Entrar',  href: signin_path) }
       end
 
       describe "followed by sign out" do
-        before { click_link "Sign out" }
-        it { should have_link("Sign in") }
+        before { click_link "Sair" }
+        it { should have_link("Entrar") }
       end
 
     end
@@ -73,18 +73,18 @@ describe "Authentication" do
 
         describe "when attempting to visit create user page" do
           before { visit signup_path }
-          it { should have_title('Sign in') }
+          it { should have_title('Entrar') }
         end
 
         describe "when attempting to visit a protected page" do
           before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
+          it { should have_title('Entrar') }
 
           describe "after signing in" do
             before do
               fill_in "Email",      with: user.email
               fill_in "Password",   with: user.password
-              click_button "Sign in"
+              click_button "Entrar"
             end
 
             it "should render the desired protected page" do
@@ -100,7 +100,7 @@ describe "Authentication" do
 
         describe "visiting the users index" do
           before { visit users_path }
-          it { should have_title('Sign in') }
+          it { should have_title('Entrar') }
         end
       end
 
