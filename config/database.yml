@@ -11,21 +11,21 @@ default: &default
 
 development:
   <<: *default
-  database: sample-app-db 
+  database: atlantico-portugues-db-dev
   host: localhost
-  username: rails 
-  password: rails
+  username: atlantico-portugues 
+  password: atlantico 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sample-app-test-db 
+  database: atlantico-portugues-db-test
   host: localhost
-  username: rails 
-  password: rails
+  username: atlantico-portugues 
+  password: atlantico 
 
 production:
   <<: *default
-  database: sample-app-db 
+  database: atlantico-portugues-db 
