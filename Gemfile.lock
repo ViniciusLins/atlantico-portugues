@@ -259,7 +259,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (= 3.0.0)
   bootstrap-will_paginate (= 0.0.6)
-  bootsy
+  bootsy (= 2.1.0)
   byebug (= 3.5.1)
   capybara (= 1.1.2)
   coffee-rails (= 4.1.0)
