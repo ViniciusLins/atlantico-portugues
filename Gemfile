@@ -22,7 +22,7 @@ gem 'bootstrap-sass', '3.0.0'
 # Will paginate, enable pagination data
 gem 'will_paginate', '3.0.6'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'bootsy'
+gem 'bootsy', '2.1.0'
 
 # Rails erd gem to generate model ER
 gem 'rails-erd'
