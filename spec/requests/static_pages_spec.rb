@@ -62,5 +62,6 @@ describe "Static pages" do
     should have_link('Sign in',      href: signin_path) 
     should_not have_link('Sign out',      href: signout_path) 
     should_not have_link('Users') 
+    should_not have_link('Páginas', href: pages_path) 
   end
 end
