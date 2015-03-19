@@ -13,6 +13,7 @@ describe "User pages" do
 
     it { should have_title('All users') }
     it { should have_selector('h1', text: 'All users') }
+    it { should_not have_link("Criar usuário", href: signup_path) } 
 
     describe "pagination" do
       it "should list each user for first page" do
@@ -38,7 +39,16 @@ describe "User pages" do
           expect { click_link('delete') }.to change(User, :count).by(-1)
         end
         it { should_not have_link('delete', href: user_path(admin)) }
+
       end
+    end
+    describe "as an admin user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      before do
+        sign_in admin
+        visit users_path
+      end
+      it { should have_link("Criar usuário", href: signup_path) } 
     end
   end
 
