@@ -22,6 +22,35 @@ body {
     padding-top: 60px;
 }
 
+/*
+.container {
+    background: url("map-background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 0.4;
+}*/
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
+  opacity: 0.2;
+}
+
+#main-container {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #888888;
+  padding: 20px;
+}
+
 section {
     overflow: auto;
 }
@@ -160,6 +189,10 @@ input, textarea, select, .uneditable-input {
   height: auto; 
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+.form-control {
+  height: 50px !important; 
 }
 
 #bootsy-editor {
