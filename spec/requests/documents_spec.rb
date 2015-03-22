@@ -3,14 +3,15 @@ require 'spec_helper'
 describe "Documents" do
   subject { page }
 
+  let!(:document) { FactoryGirl.create(:document) }
+
   describe "index page" do
     let!(:user) { FactoryGirl.create(:user) }
-    let!(:document) { FactoryGirl.create(:document) }
-    before { 
+    before do 
       sign_in user
       visit documents_path
-    }
-    
+    end 
+
     it { should have_title(I18n.t('documents.title')) }
     it { should have_selector('h1', text: I18n.t('documents.title')) }
 
@@ -36,7 +37,6 @@ describe "Documents" do
 
   describe "create page" do
     let(:admin) { FactoryGirl.create(:user, admin: true) }
-    let!(:document) { FactoryGirl.create(:document) }
 
     before do
       sign_in admin
@@ -63,6 +63,7 @@ describe "Documents" do
         fill_in I18n.t('documents.title_model'),      with: "Sample Document"
         fill_in I18n.t('documents.author'),           with: "Sample Author"
         fill_in I18n.t('documents.keywords'),         with: "Sample, Document"
+        attach_file I18n.t('documents.file'), "spec/assets/test.pdf"
       end
       it "should create a document" do
         expect { click_button I18n.t('documents.save') }.to change(Document, :count).by(1)
@@ -77,12 +78,29 @@ describe "Documents" do
         should have_message('')
       end
     end
+
+    describe "when try upload a invalid file" do
+      before do
+        fill_in I18n.t('documents.title_model'),      with: "Sample Document"
+        fill_in I18n.t('documents.author'),           with: "Sample Author"
+        fill_in I18n.t('documents.keywords'),         with: "Sample, Document"
+        attach_file I18n.t('documents.file'), "spec/assets/invalid.exe"
+      end
+
+      it "should show a error message" do
+        click_button I18n.t('documents.save') 
+        should have_error_message('')
+      end
+
+      it "should cannot save document" do
+        expect { click_button I18n.t('documents.save') }.not_to change(Document, :count)
+      end
+    end
   end
 
 
   describe "edit page" do
     let(:admin) { FactoryGirl.create(:user, admin: true) }
-    let!(:document) { FactoryGirl.create(:document) }
     let(:btn_save) { I18n.t('documents.save') }
 
     before do

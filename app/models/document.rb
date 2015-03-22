@@ -21,7 +21,7 @@ class Document < ActiveRecord::Base
   validates_attachment :file, content_type: { content_type: "application/pdf" }
   validates :file, :attachment_presence => true
   validates_with AttachmentPresenceValidator, :attributes => :file
-  validates_with AttachmentSizeValidator, :attributes => :avatar, :less_than => 50.megabytes
+  validates_with AttachmentSizeValidator, :attributes => :file, :less_than => 50.megabytes
 
   validates :title,   presence: true
   validates :author,  presence: true

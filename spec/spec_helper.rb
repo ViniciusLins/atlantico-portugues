@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'spork'
+
+include ActionDispatch::TestProcess
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -10,8 +12,7 @@ Spork.prefork do
 
     # --- Instructions ---
     # Sort the contents of this file into a Spork.prefork and a Spork.each_run
-    # block.
-    #
+    # block.  #
     # The Spork.prefork block is run only once when the spork server is started.
     # You typically want to place most of your (slow) initializer code in here, in
     # particular, require'ing any 3rd-party gems that you don't normally modify
@@ -90,6 +91,11 @@ Spork.prefork do
 
       config.after(:each) do
           DatabaseCleaner.clean
+      end
+
+      # This is clean paperclip files used in test
+      config.after(:suite) do
+          FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
       end
     end
 end
