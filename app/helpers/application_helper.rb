@@ -15,7 +15,7 @@ module ApplicationHelper
               when 'error'
                 "danger"
               when 'notice'
-                "warning"
+                "success"
               else
                 key
               end

@@ -43,7 +43,7 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.html { redirect_to @document, notice: I18n.t('documents.messages.update_success') }
         format.json { render :show, status: :ok, location: @document }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.html { redirect_to documents_url, notice: I18n.t('documents.messages.destroy_success') }
       format.json { head :no_content }
     end
   end

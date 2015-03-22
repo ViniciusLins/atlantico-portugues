@@ -48,5 +48,7 @@ pt-BR:
     save: "Salvar documento"
     messages: 
       create_success: "Documento salvo com sucesso."
+      update_success: "Documento atualizado com sucesso."
+      destroy_success: "Documento excluído com sucesso."
 
 
