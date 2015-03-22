@@ -31,6 +31,8 @@ gem 'paperclip', '~> 4.2'
 # Rails erd gem to generate model ER
 gem 'rails-erd'
 
+gem 'pdfjs_rails'
+
 
 
 group :development, :test do

@@ -11,6 +11,7 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
+    @pdf_url = build_pdf_url @document
   end
 
   # GET /documents/new
@@ -72,5 +73,9 @@ class DocumentsController < ApplicationController
     def document_params
       params.require(:document).permit(
         :title, :author, :description, :keywords, :published_year, :publisher, :file)
+    end
+
+    def build_pdf_url(doc)
+      URI.join(request.url,@document.file.url)
     end
 end
