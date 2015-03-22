@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id             :integer         not null, primary key
+#  title          :string
+#  author         :string
+#  description    :text
+#  keywords       :string
+#  published_year :integer
+#  publisher      :string
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
+#
+
 require 'spec_helper'
 
 describe Document do
@@ -14,6 +29,7 @@ describe Document do
   it { should respond_to(:keywords) }
   it { should respond_to(:published_year) }
   it { should respond_to(:publisher) }
+  it { should respond_to(:file) }
 
   # Test validations
   describe "when title is not present" do
@@ -31,19 +47,14 @@ describe Document do
     it { should_not be_valid }
   end
 
-end
-# == Schema Information
-#
-# Table name: documents
-#
-#  id             :integer         not null, primary key
-#  title          :string
-#  author         :string
-#  description    :text
-#  keywords       :string
-#  published_year :integer
-#  publisher      :string
-#  created_at     :datetime        not null
-#  updated_at     :datetime        not null
-#
+  describe "when file size is greather than 50 mb" do
+    before { @document.file_file_size = 51.megabytes }
+    it { should_not be_valid }
+  end
 
+  describe "when file type not is pdf" do
+    before { @document.file_content_type = 'image/png' }
+    it { should_not be_valid }
+  end
+
+end
