@@ -131,6 +131,27 @@ describe "Authentication" do
           before { visit edit_document_path(document) }
           it { should have_title(I18n.t(:signin_title)) }
         end
+
+        describe "when try destroy a document" do
+          before { delete document_path(document) }
+          specify "should redirect to signin" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+
+        describe "when try create action a document" do
+          before { post documents_path }
+          specify "should redirect to signin" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+
+        describe "when try update a document" do
+          before { put document_path(document) }
+          specify "should redirect to signin" do
+           response.should redirect_to(signin_path) 
+          end
+        end
       end
 
       describe "in the pages controller" do
