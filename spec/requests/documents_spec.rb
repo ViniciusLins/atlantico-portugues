@@ -74,7 +74,7 @@ describe "Documents" do
       end
       it "should show a success message" do
         click_button I18n.t('documents.save')
-        should have_warning_message('')
+        should have_message('')
       end
     end
   end
@@ -119,7 +119,7 @@ describe "Documents" do
         should have_title(new_title) 
       end
       it "should show a success message" do
-        should have_warning_message('')
+        should have_message('')
       end
     end
   end
