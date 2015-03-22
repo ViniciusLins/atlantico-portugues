@@ -39,6 +39,7 @@ pt-BR:
     show: "Ver"
     edit: "Editar"
     destroy: "Excluir"
+    download: "Baixar"
     title_model: "Título"
     author: "Autor"
     description: "Descrição"
