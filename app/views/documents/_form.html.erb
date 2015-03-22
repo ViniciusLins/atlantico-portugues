@@ -1,41 +1,27 @@
-<%= form_for(@document) do |f| %>
-  <% if @document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+<div class="row">
+  <div class=".col-md-6">
+    <%= form_for(@document) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-      <ul>
-      <% @document.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= f.label :title, t('documents.title_model') %><br>
+      <%= f.text_field :title, class: "form-control" %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      <%= f.label :author, t('documents.author') %><br>
+      <%= f.text_field :author, class: "form-control" %>
+
+      <%= f.label :description , t('documents.description')%><br>
+      <%= f.text_area :description, class: "form-control" %>
+
+      <%= f.label :keywords, t('documents.keywords') %><br>
+      <%= f.text_field :keywords, class: "form-control" %>
+
+      <%= f.label :published_year, t('documents.published_year') %><br>
+      <%= f.number_field :published_year, class: "form-control" %>
+
+      <%= f.label :publisher, t('documents.publisher') %><br>
+      <%= f.text_field :publisher, class: "form-control" %>
+
+      <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :keywords %><br>
-    <%= f.text_field :keywords %>
-  </div>
-  <div class="field">
-    <%= f.label :published_year %><br>
-    <%= f.number_field :published_year %>
-  </div>
-  <div class="field">
-    <%= f.label :publisher %><br>
-    <%= f.text_field :publisher %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

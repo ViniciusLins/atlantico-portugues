@@ -36,6 +36,12 @@ RSpec::Matchers.define :have_message do |message|
   end
 end
 
+RSpec::Matchers.define :have_warning_message do |message|
+  match do |page|
+    page.should have_selector('div.alert.alert-warning', text: message)
+  end
+end
+
 RSpec::Matchers.define :have_title do |title|
   match do |page|
     page.should have_selector('title', text: title)

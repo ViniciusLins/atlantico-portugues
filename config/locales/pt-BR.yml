@@ -34,6 +34,8 @@ pt-BR:
   documents:
     title: "Documentos"
     new: "Novo documento"
+    new_title: "Novo Documento"
+    edit_title: "Editar Documento"
     show: "Ver"
     edit: "Editar"
     destroy: "Excluir"
@@ -43,4 +45,8 @@ pt-BR:
     keywords: "Palavras chave"
     published_year: "Ano de publicação"
     publisher: "Editor"
+    save: "Salvar documento"
+    messages: 
+      create_success: "Documento salvo com sucesso."
+
 

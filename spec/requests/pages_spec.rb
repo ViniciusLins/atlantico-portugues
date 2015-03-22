@@ -66,7 +66,7 @@ describe "Pages" do
       end
       it "should show a success message" do
         click_button "Criar página"
-        should have_selector('div.alert.alert-notice') 
+        should have_warning_message('')
       end
 
     end
@@ -110,7 +110,7 @@ describe "Pages" do
         should have_title(new_title) 
       end
       it "should show a success message" do
-        should have_selector('div.alert.alert-notice') 
+        should have_warning_message('')
       end
     end
   end

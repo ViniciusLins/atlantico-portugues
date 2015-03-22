@@ -29,7 +29,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new }
