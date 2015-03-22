@@ -29,7 +29,9 @@ gem 'bootsy', '2.1.0'
 gem 'paperclip', '~> 4.2'
 
 # Rails erd gem to generate model ER
-gem 'rails-erd'
+gem 'rails-erd', '1.3.1'
+
+gem 'pdfjs_rails', '0.0.1'
 
 
 
