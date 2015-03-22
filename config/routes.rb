@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :documents
+  get '/search',  to: 'documents#search'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :pages
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
-  get '/search',  to: 'static_pages#search'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
