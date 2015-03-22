@@ -1,10 +1,8 @@
 <tr>
   <td><%= document.title %></td>
   <td><%= document.author %></td>
-  <td><%= document.description %></td>
-  <td><%= document.keywords %></td>
+  <td><%= limit_string(document.description) %></td>
   <td><%= document.published_year %></td>
-  <td><%= document.publisher %></td>
   <td><%= link_to t('documents.show'), document %></td>
   <% if signed_in? %>
     <td><%= link_to t('documents.edit'), edit_document_path(document) %></td>

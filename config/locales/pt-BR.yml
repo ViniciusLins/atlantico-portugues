@@ -37,4 +37,10 @@ pt-BR:
     show: "Ver"
     edit: "Editar"
     destroy: "Excluir"
+    title_model: "Título"
+    author: "Autor"
+    description: "Descrição"
+    keywords: "Palavras chave"
+    published_year: "Ano de publicação"
+    publisher: "Editor"
 

@@ -1,16 +1,21 @@
 <%= provide(:title, t('documents.title')) %>
 <h1><%= t('documents.title')%></h1>
 
+<% if signed_in? %>
+  <div id="btn-new-document">
+    <%= link_to t('documents.new'), new_document_path, class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>
+
 <%= will_paginate %>
-<table>
+
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Description</th>
-      <th>Keywords</th>
-      <th>Published year</th>
-      <th>Publisher</th>
+      <th><%= t 'documents.title_model'     %></th>
+      <th><%= t 'documents.author'          %></th>
+      <th><%= t 'documents.description'     %></th>
+      <th><%= t 'documents.published_year'  %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +29,3 @@
 
 <br>
 
-<% if signed_in? %>
-  <%= link_to t('documents.new'), new_document_path %>
-<% end %>
