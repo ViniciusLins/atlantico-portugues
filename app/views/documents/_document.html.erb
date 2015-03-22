@@ -3,6 +3,7 @@
   <td><%= document.author %></td>
   <td><%= limit_string(document.description) %></td>
   <td><%= document.published_year %></td>
+  <td><%= link_to t('documents.download'), document.file.url, class: "btn btn-success" %></td>
   <td><%= link_to t('documents.show'), document, class: "btn btn-default" %></td>
   <% if signed_in? %>
     <td><%= link_to t('documents.edit'), edit_document_path(document), 
