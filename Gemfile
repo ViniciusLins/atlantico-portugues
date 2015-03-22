@@ -10,7 +10,7 @@ gem 'rails', '4.2.0'
 gem 'bcrypt-ruby', '3.1.2'
 
 # Faker gem allow us, fill database with some users
-gem 'faker', '1.0.1'
+gem 'faker', '1.4.3'
 # Database postgres
 gem 'pg', '0.18.1'
 

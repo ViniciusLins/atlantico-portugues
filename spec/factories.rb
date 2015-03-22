@@ -13,4 +13,13 @@ FactoryGirl.define do
     title "Home"
     body  "Bem vindo ao Atlantico Portugues!"
   end
+
+  factory :document do
+    title "Sample Document"
+    author "Fulano Ciclano"
+    description "Lorem ipsum dolor culum"
+    keywords "document, history, scientific"
+    published_year 1500
+    publisher "Portuguese Goverment"
+  end
 end

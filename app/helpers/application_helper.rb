@@ -14,6 +14,8 @@ module ApplicationHelper
       type =  case key
               when 'error'
                 "danger"
+              when 'notice'
+                "warning"
               else
                 key
               end

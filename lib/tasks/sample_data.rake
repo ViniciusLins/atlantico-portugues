@@ -3,6 +3,7 @@ namespace :db do
   task populate: :environment do
     create_users
     create_pages
+    create_documents
   end
 end
 
@@ -51,4 +52,17 @@ def create_pages
                 </h2>
               </div>
               ")
+end
+
+def create_documents
+  100.times do |n|
+    Document.create!(
+      title: Faker::Lorem.sentence,
+      author: Faker::Name.name,
+      description: Faker::Lorem.paragraph(10),
+      keywords: Faker::Lorem.words(6),
+      published_year: Faker::Date.between(1000.years.ago, Date.today).year,
+      publisher: Faker::Company.name
+    )
+  end
 end

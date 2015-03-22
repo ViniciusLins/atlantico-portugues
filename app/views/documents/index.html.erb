@@ -1,0 +1,29 @@
+<%= provide(:title, t('documents.title')) %>
+<h1><%= t('documents.title')%></h1>
+
+<%= will_paginate %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>Keywords</th>
+      <th>Published year</th>
+      <th>Publisher</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @documents %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<% if signed_in? %>
+  <%= link_to t('documents.new'), new_document_path %>
+<% end %>
