@@ -1,4 +1,5 @@
 <tr>
+  <td><%= image_tag document.file.url(:thumbnail) %></td>
   <td><%= document.title %></td>
   <td><%= document.author %></td>
   <td><%= limit_string(document.description) %></td>

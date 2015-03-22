@@ -21,7 +21,12 @@ gem 'pg', '0.18.1'
 gem 'bootstrap-sass', '3.0.0'
 # Will paginate, enable pagination data
 gem 'will_paginate-bootstrap', '1.0.1'
+
+# Bootsy is a WYSWIG EDITOR
 gem 'bootsy', '2.1.0'
+
+# Handle upload documents
+gem 'paperclip', '~> 4.2'
 
 # Rails erd gem to generate model ER
 gem 'rails-erd'

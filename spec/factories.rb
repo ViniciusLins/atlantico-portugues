@@ -21,5 +21,6 @@ FactoryGirl.define do
     keywords "document, history, scientific"
     published_year 1500
     publisher "Portuguese Goverment"
+    file { fixture_file_upload(Rails.root.join('spec', 'assets', 'test.pdf'), 'application/pdf') } 
   end
 end
