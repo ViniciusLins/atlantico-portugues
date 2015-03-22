@@ -30,6 +30,5 @@ module SampleApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.paperclip_defaults = { :fog_credentials => { :local_root => "#{Rails.root}/tmp" } }
   end
 end
