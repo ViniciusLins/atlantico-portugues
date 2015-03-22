@@ -20,7 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pt-BR:
+  dialogs:
+    are_you_sure: "Você tem certeza?"
   hello: "Hello world"
+  signin_title: "Entrar"
   name: "Nome"
   email: "Email"
   password: "Senha"
@@ -28,3 +31,24 @@ pt-BR:
   save_changes: "Salvar alterações"
   update_profile: "Atualizar perfil"
   create_user: "Criar usuário"
+  documents:
+    title: "Documentos"
+    new: "Novo documento"
+    new_title: "Novo Documento"
+    edit_title: "Editar Documento"
+    show: "Ver"
+    edit: "Editar"
+    destroy: "Excluir"
+    title_model: "Título"
+    author: "Autor"
+    description: "Descrição"
+    keywords: "Palavras chave"
+    published_year: "Ano de publicação"
+    publisher: "Editor"
+    save: "Salvar documento"
+    messages: 
+      create_success: "Documento salvo com sucesso."
+      update_success: "Documento atualizado com sucesso."
+      destroy_success: "Documento excluído com sucesso."
+
+

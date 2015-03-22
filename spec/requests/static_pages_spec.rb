@@ -57,6 +57,8 @@ describe "Static pages" do
     click_link "Home"
     click_link "atlântico português"
     should have_selector 'title', text: full_title('')
+    click_link I18n.t('documents.title')
+    should have_title(full_title(I18n.t('documents.title')))
   end
 
   it "should have the sign in/out links" do

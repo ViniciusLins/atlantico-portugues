@@ -3,8 +3,8 @@
   <%= link_to "atlântico português", root_path, id: "logo" %>
   <nav>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Home",     root_path %></li>
-      <li><%= link_to "Ajuda",     help_path %></li>
+      <li><%= link_to "Home",         root_path %></li>
+      <li><%= link_to t('documents.title'),  documents_path %></li>
       <% if signed_in? %>
         <% if current_user.admin? %>
           <li><%= link_to "Páginas", pages_path %></li>
@@ -26,6 +26,7 @@
       <% else %>
         <li><%= link_to "Entrar",  signin_path %></li>
       <% end %>
+      <li><%= link_to "Ajuda",        help_path %></li>
     </ul>
   </nav>
 </div>

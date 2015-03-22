@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_for(@document) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title, t('documents.title_model') %><br>
+      <%= f.text_field :title, class: "form-control" %>
+
+      <%= f.label :author, t('documents.author') %><br>
+      <%= f.text_field :author, class: "form-control" %>
+
+      <%= f.label :description , t('documents.description')%><br>
+      <%= f.text_area :description, class: "form-control" %>
+
+      <%= f.label :keywords, t('documents.keywords') %><br>
+      <%= f.text_field :keywords, class: "form-control" %>
+
+      <%= f.label :published_year, t('documents.published_year') %><br>
+      <%= f.number_field :published_year, class: "form-control" %>
+
+      <%= f.label :publisher, t('documents.publisher') %><br>
+      <%= f.text_field :publisher, class: "form-control" %>
+
+      <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  </div>
+</div>

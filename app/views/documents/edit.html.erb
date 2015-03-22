@@ -1,0 +1,6 @@
+<% provide(:title, t('documents.edit_title')) %>
+<h1><%= t('documents.edit_title') %></h1>
+
+<%= render 'form', btn_name: t('documents.save') %>
+
+<%= link_to t('documents.show'), @document, class: "btn btn-default btn-lg" %> 

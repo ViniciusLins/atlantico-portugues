@@ -104,6 +104,56 @@ describe "Authentication" do
         end
       end
 
+      describe "in the documents controller" do
+        let!(:document) { FactoryGirl.create(:document) }
+
+        describe "visiting index" do
+          before { visit documents_path }
+
+          it { should have_title(I18n.t('documents.title')) }
+          it { should_not have_link(I18n.t('documents.new')) }
+          it { should_not have_link(I18n.t('documents.edit')) }
+          it { should_not have_link(I18n.t('documents.destroy')) }
+        end
+
+        describe "visiting show" do
+          before { visit document_path(document) }
+          it { should have_title(document.title) }
+          it { should_not have_link(I18n.t('documents.edit')) }
+        end
+
+        describe "visiting new" do
+          before { visit new_document_path }
+          it { should have_title(I18n.t(:signin_title)) }
+        end
+
+        describe "visiting edit" do
+          before { visit edit_document_path(document) }
+          it { should have_title(I18n.t(:signin_title)) }
+        end
+
+        describe "when try destroy a document" do
+          before { delete document_path(document) }
+          specify "should redirect to signin" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+
+        describe "when try create action a document" do
+          before { post documents_path }
+          specify "should redirect to signin" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+
+        describe "when try update a document" do
+          before { put document_path(document) }
+          specify "should redirect to signin" do
+           response.should redirect_to(signin_path) 
+          end
+        end
+      end
+
       describe "in the pages controller" do
         let(:mypage) { FactoryGirl.create(:page) }
 

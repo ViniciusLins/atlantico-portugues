@@ -1,0 +1,36 @@
+<%= provide(:title, @document.title) %>
+<h1><%= @document.title %></h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @document.author %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @document.description %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @document.keywords %>
+</p>
+
+<p>
+  <strong>Published year:</strong>
+  <%= @document.published_year %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @document.publisher %>
+</p>
+
+<% if signed_in? %>
+  <%= link_to t('documents.edit'), edit_document_path(@document), class: "btn btn-default btn-lg" %> 
+<% end %>
