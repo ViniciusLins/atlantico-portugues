@@ -11,4 +11,8 @@ class StaticPagesController < ApplicationController
 
     def contact
     end
+
+    def search
+      @documents = Document.search(params[:search]).page(params[:page])
+    end
 end
