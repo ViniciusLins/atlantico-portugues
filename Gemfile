@@ -20,8 +20,7 @@ gem 'pg', '0.18.1'
 # Twitter bootstrap gem
 gem 'bootstrap-sass', '3.0.0'
 # Will paginate, enable pagination data
-gem 'will_paginate-bootstrap'
-gem 'bootstrap-will_paginate', '0.0.6'
+gem 'will_paginate-bootstrap', '1.0.1'
 gem 'bootsy', '2.1.0'
 
 # Rails erd gem to generate model ER
