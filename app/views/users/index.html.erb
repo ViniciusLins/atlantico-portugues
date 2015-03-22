@@ -7,10 +7,10 @@
   </div>
 <% end %>
 
-<%= will_paginate %>
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
 
 <ul class="users">
   <%= render @users %>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
