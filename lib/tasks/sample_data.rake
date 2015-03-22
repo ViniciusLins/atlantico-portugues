@@ -62,7 +62,8 @@ def create_documents
       description: Faker::Lorem.paragraph(10),
       keywords: Faker::Lorem.words(6),
       published_year: Faker::Date.between(1000.years.ago, Date.today).year,
-      publisher: Faker::Company.name
+      publisher: Faker::Company.name,
+      file: File.open(Dir['spec/assets/*.pdf'].sample)
     )
   end
 end
