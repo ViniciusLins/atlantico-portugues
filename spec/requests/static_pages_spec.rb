@@ -26,7 +26,7 @@ describe "Static pages" do
 
       describe "typing exactly title" do
         before do
-          fill_in I18n.t('home.search') with: "Sample Document" 
+          fill_in I18n.t('home.search'), with: "Sample Document" 
           click_button I18n.t('home.btn-search')
         end
 
@@ -35,19 +35,19 @@ describe "Static pages" do
           results = I18n.t('home.results.result').singularize
           founds = I18n.t('home.results.found').singularize
           text = "1 #{results} #{founds}"
-          should have_content(text))
+          should have_content(text)
         end
-        it { should have_title(I18n.t('home.results.title') }
+        it { should have_title(I18n.t('home.results.title')) }
       end
 
       describe "search empty string" do
         before do
-          fill_in I18n.t('home.search') with: " " 
+          fill_in I18n.t('home.search'), with: " " 
           click_button I18n.t('home.btn-search')
         end
 
         it { should have_content(document.title) }
-        it { should have_title(I18n.t('home.results.title') }
+        it { should have_title(I18n.t('home.results.title')) }
       end
     end
   end

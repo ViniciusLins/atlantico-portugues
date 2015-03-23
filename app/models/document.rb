@@ -28,12 +28,21 @@ class Document < ActiveRecord::Base
   validates :keywords, presence: true
 
 
+  searchable do
+    text :keywords, boost: 3
+    text :title, boost: 4 
+    text :author 
+    text :description
+    text :publisher
 
-  def self.search(query)
-    if !query.blank?
-      where("title ILIKE ?", "%#{query}%")
-    else
-      all()
-    end
+    integer :published_year
   end
+
+  #def self.search(query)
+  #  if !query.blank?
+  #    where("title ILIKE ?", "%#{query}%")
+  #  else
+  #    all()
+  #  end
+  #end
 end

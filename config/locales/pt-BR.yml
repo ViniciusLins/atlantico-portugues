@@ -55,6 +55,8 @@ pt-BR:
     publisher: "Editor"
     file: "Arquivo"
     save: "Salvar documento"
+    search: 
+      title: "Resultados"
     messages: 
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."
