@@ -3,10 +3,10 @@
     <%= form_for(@page) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :title %><br>
+        <%= f.label :title, t('.title') %><br>
         <%= f.text_field :title, class: "form-control" %>
 
-        <%= f.label :body %><br>
+        <%= f.label :body, t('.body') %><br>
         <%= f.bootsy_area :body, id: "bootsy-editor" %>
 
         <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
