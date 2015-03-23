@@ -1,0 +1,24 @@
+<%= provide(:title, t('.title')) %>
+<h1><%= t('.title')%></h1>
+<h2>
+<%= build_results_text @search.total %>
+</h2>
+<%= will_paginate @documents, renderer: BootstrapPagination::Rails %>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><%= t 'documents.title_model'     %></th>
+      <th><%= t 'documents.author'          %></th>
+      <th><%= t 'documents.description'     %></th>
+      <th><%= t 'documents.published_year'  %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @documents %>
+  </tbody>
+</table>
+
+<%= will_paginate @documents, renderer: BootstrapPagination::Rails %>

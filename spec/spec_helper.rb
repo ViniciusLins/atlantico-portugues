@@ -97,11 +97,14 @@ Spork.prefork do
       config.after(:suite) do
           FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
       end
+
+      #`rake sunspot:solr:start RAILS_ENV=test`
+
+
     end
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-
 end
 

@@ -63,6 +63,20 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def search
+    @search = Document.search do
+      fulltext params[:search] do
+        query_phrase_slop 5
+        phrase_fields title:  2.0
+        phrase_slop 2
+      end
+
+      order_by :published_year, :desc
+      paginate page: params[:page] 
+    end
+    @documents = @search.results
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_document

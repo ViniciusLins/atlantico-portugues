@@ -1,0 +1,24 @@
+<li><%= link_to "Home",         root_path %></li>
+<li><%= link_to t('documents.title'),  documents_path %></li>
+<% if signed_in? %>
+  <% if current_user.admin? %>
+    <li><%= link_to "Páginas", pages_path %></li>
+  <% end %>
+  <li><%= link_to "Usuários", users_path %></li>
+  <li id="fat-menu" class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Minha Conta <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Perfil", current_user %></li>
+      <li><%= link_to "Configurações", edit_user_path(current_user) %></li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to "Sair", signout_path, method: "delete" %>
+      </li>
+    </ul>
+  </li>
+<% else %>
+  <li><%= link_to "Entrar",  signin_path %></li>
+<% end %>
+<li><%= link_to "Ajuda",        help_path %></li>

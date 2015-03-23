@@ -6,4 +6,10 @@ module DocumentsHelper
       big_string
     end
   end
+
+  def build_results_text(total)
+     results = I18n.t('documents.search.result').pluralize(total) 
+     founds = I18n.t('documents.search.found').pluralize(total) 
+     "#{total} #{results} #{founds}"
+  end
 end
