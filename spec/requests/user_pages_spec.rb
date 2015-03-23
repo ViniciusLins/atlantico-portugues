@@ -11,9 +11,9 @@ describe "User pages" do
       visit users_path
     end
 
-    it { should have_title('All users') }
-    it { should have_selector('h1', text: 'All users') }
-    it { should_not have_link("Criar usuário", href: signup_path) } 
+    it { should have_title(I18n.t('users.index.title')) }
+    it { should have_selector('h1', text: I18n.t('users.index.title')) }
+    it { should_not have_link(I18n.t('users.new.create'), href: signup_path) } 
 
     describe "pagination" do
       it "should list each user for first page" do
@@ -25,7 +25,7 @@ describe "User pages" do
 
     describe "delete links" do
 
-      it { should_not have_link('delete') }
+      it { should_not have_link(I18n.t('users.user.delete')) }
 
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
@@ -34,11 +34,11 @@ describe "User pages" do
           visit users_path
         end
 
-        it { should have_link('delete', href: user_path(User.first)) }
+        it { should have_link(I18n.t('users.user.delete'), href: user_path(User.first)) }
         it "should be able to delete another user" do
-          expect { click_link('delete') }.to change(User, :count).by(-1)
+          expect { click_link(I18n.t('users.user.delete')) }.to change(User, :count).by(-1)
         end
-        it { should_not have_link('delete', href: user_path(admin)) }
+        it { should_not have_link(I18n.t('users.user.delete'), href: user_path(admin)) }
 
       end
     end
@@ -48,7 +48,7 @@ describe "User pages" do
         sign_in admin
         visit users_path
       end
-      it { should have_link("Criar usuário", href: signup_path) } 
+      it { should have_link(I18n.t('users.index.create'), href: signup_path) } 
     end
   end
 
@@ -60,14 +60,14 @@ describe "User pages" do
       visit signup_path 
     end
 
-    it { should have_selector('h1',     text: 'Criar usuário') }
-    it { should have_selector('title',  text: 'Criar usuário') }
+    it { should have_selector('h1',     text: I18n.t('users.new.create')) }
+    it { should have_selector('title',  text: I18n.t('users.new.create')) }
 
   end
 
   describe "signup" do
     let(:admin) { FactoryGirl.create(:user, admin: true) }
-    let(:submit) { I18n.t(:create_user) }
+    let(:submit) { I18n.t('users.new.submit') }
     before do
       sign_in admin
       visit signup_path 
@@ -86,16 +86,16 @@ describe "User pages" do
         expect {}.not_to change(User, :count)
       end
 
-      it { should have_selector('title', text: 'Criar usuário') }
+      it { should have_selector('title', text: I18n.t('users.new.create') ) }
       it { should have_error_message('') }
     end
 
     describe "when submit valid information" do
       before do
-        fill_in I18n.t(:name),         with: "Example User"
-        fill_in I18n.t(:email),        with: "user@example.com"
-        fill_in I18n.t(:password),     with: "foobar"
-        fill_in I18n.t(:password_confirmation),   with: "foobar"
+        fill_in I18n.t('.name'),         with: "Example User"
+        fill_in I18n.t('.email'),        with: "user@example.com"
+        fill_in I18n.t('.password'),     with: "foobar"
+        fill_in I18n.t('.password_confirmation'),   with: "foobar"
       end
 
       it "should create a user" do
