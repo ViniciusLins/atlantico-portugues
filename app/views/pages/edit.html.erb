@@ -1,6 +1,6 @@
 <% provide( :title, 'Editar Página') %>
 <h1>Editar Página</h1>
 
-<%= render 'form', btn_name: "Salvar alterações" %>
+<%= render 'form', btn_name: t('.button')%>
 
-<%= link_to 'Visualizar', @page, class: "btn btn-default btn-lg" %> 
+<%= link_to t('.view'), @page, class: "btn btn-default btn-lg" %> 

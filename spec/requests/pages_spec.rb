@@ -88,7 +88,7 @@ describe "Pages" do
 
     describe "with invalid information" do
       before do
-        fill_in "Title",  with: "  "
+        fill_in I18n.t('pages.form.title'),  with: "  "
         click_button btn_save
       end
 
@@ -100,7 +100,7 @@ describe "Pages" do
       let(:new_title) { "Help" }
       let(:new_body) { "a" * 50 }
       before do
-        fill_in "Title",      with: new_title 
+        fill_in I18n.t('pages.form.title'),      with: new_title 
         click_button btn_save
       end
 

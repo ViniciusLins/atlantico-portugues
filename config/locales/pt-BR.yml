@@ -62,4 +62,10 @@ pt-BR:
     new:
       create: "Criar usuário"
       submit: "Criar"
-
+  pages:
+    edit:
+      button: "Salvar alterações"
+      view: "Visualizar resultado" 
+    form:
+      title: "Título"
+      body: "Texto a ser exibido"
