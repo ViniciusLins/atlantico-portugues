@@ -21,3 +21,6 @@
 .DS_Store
 public/system/
 spec/test_files/
+solr/test
+solr/pids
+sunspot-solr.pid

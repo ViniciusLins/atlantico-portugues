@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "Documents" do
+
   subject { page }
 
   let!(:document) { FactoryGirl.create(:document) }

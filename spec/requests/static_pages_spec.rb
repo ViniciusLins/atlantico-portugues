@@ -21,32 +21,24 @@ describe "Static pages" do
     it { should_not have_selector('title', text: "| Home") }
     it { should have_content(@home_page.body) }
 
-    describe "when user search documents" do
+    describe "when user search documents"  do
       let!(:document) { FactoryGirl.create(:document, title: "Sample Document") }
 
       describe "typing exactly title" do
         before do
-          fill_in I18n.t('home.search'), with: "Sample Document" 
+          fill_in "search", with: "Sample Document" 
           click_button I18n.t('home.btn-search')
         end
 
-        it { should have_content(document.title) }
-        it "should show total results founded" do 
-          results = I18n.t('home.results.result').singularize
-          founds = I18n.t('home.results.found').singularize
-          text = "1 #{results} #{founds}"
-          should have_content(text)
-        end
         it { should have_title(I18n.t('home.results.title')) }
       end
 
       describe "search empty string" do
         before do
-          fill_in I18n.t('home.search'), with: " " 
+          fill_in "search", with: " " 
           click_button I18n.t('home.btn-search')
         end
 
-        it { should have_content(document.title) }
         it { should have_title(I18n.t('home.results.title')) }
       end
     end
