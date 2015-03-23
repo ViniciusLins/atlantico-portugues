@@ -74,9 +74,18 @@ pt-BR:
       create: "Criar usuário"
       submit: "Criar"
   pages:
+    page:
+      view: "Visualizar"
+      edit: "Editar"
+      delete: "Excluir"
+      confirmation: "Tem certeza disso?"
     edit:
       button: "Salvar alterações"
       view: "Visualizar resultado" 
     form:
       title: "Título"
       body: "Texto a ser exibido"
+    show:
+      title:  "Título"
+      text: "Texto"
+      edit: "Editar"

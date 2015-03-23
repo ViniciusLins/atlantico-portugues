@@ -1,12 +1,12 @@
 <% provide(:title, @page.title) %>
 <p>
-  <strong>Título:</strong>
+  <strong><%= t('.title') %></strong>
   <%= @page.title %>
 </p>
 
 <p>
-  <strong>Texto:</strong>
+  <strong><%= t('.text') %></strong>
   <%= @page.body %>
 </p>
 
-<%= link_to 'Editar', edit_page_path(@page), class: "btn btn-default btn-lg" %> 
+<%= link_to t('.edit'), edit_page_path(@page), class: "btn btn-default btn-lg" %> 
