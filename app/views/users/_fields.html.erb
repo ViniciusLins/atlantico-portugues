@@ -1,13 +1,14 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<%= f.label :name, t(:name) %>
+<%= f.label I18n.t :name, :name %>
 <%= f.text_field :name, class: "form-control" %>
 
-<%= f.label :email, t(:email) %>
+<%= f.label I18n.t :email, :email %>
 <%= f.text_field :email, class: "form-control" %>
 
-<%= f.label :password, t(:password) %>
+<%= f.label I18n.t :password, :password %>
 <%= f.password_field :password, class: "form-control" %>
 
-<%= f.label :password_confirmation, t(:password_confirmation) %>
-<%= f.password_field :password_confirmation, class: "form-control" %>
+<%= f.label I18n.t :password_confirmation, :password_confirmation %>
+
+<%= f.password_field I18n.t :password_confirmation, class: "form-control" %>

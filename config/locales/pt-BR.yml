@@ -52,5 +52,14 @@ pt-BR:
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."
       destroy_success: "Documento excluído com sucesso."
-
+  users: 
+    index:
+      title: "Todos os usuários"
+      create: "Criar usuário"
+    user:
+      confirmation: "Tem certeza?"
+      delete: "Apagar"
+    new:
+      create: "Criar usuário"
+      submit: "Criar"
 
