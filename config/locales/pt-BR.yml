@@ -80,12 +80,22 @@ pt-BR:
       delete: "Excluir"
       confirmation: "Tem certeza disso?"
     edit:
+      title: "Editar Páginas"
       button: "Salvar alterações"
-      view: "Visualizar resultado" 
+      view: "Visualizar" 
     form:
       title: "Título"
-      body: "Texto a ser exibido"
+      body: "Texto"
     show:
       title:  "Título"
       text: "Texto"
       edit: "Editar"
+    index:
+      title: "Páginas"
+      titlePag: "Título"
+      text: "Texto"
+      new: "Nova página"
+    new:
+      title: "Nova Página"
+      create: "Criar Página" 
+      back: "Voltar"
