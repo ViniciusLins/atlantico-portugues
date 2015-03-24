@@ -52,24 +52,6 @@ def create_pages
                 </h2>
               </div>
               ")
-  Page.create!(title: "Docentes",
-              body: 
-              "<div class='center hero-unit'>
-                <h1>Docentes colaboradores neste projeto</h1>
-                <h2>
-                  Evergton Sales Souza - UFBA 
-                </h2>
-              </div>
-              ")
-  Page.create!(title: "Eventos",
-              body: 
-              "<div class='center hero-unit'>
-                <h1>Eventos</h1>
-                <h2>
-                  Evento 1
-                </h2>
-              </div>
-              ")
 end
 
 def create_documents
