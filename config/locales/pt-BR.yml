@@ -43,7 +43,7 @@ pt-BR:
     new: "Novo documento"
     new_title: "Novo Documento"
     edit_title: "Editar Documento"
-    show: "Ver"
+    show_link: "Ver"
     edit: "Editar"
     destroy: "Excluir"
     download: "Baixar"
@@ -63,6 +63,13 @@ pt-BR:
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."
       destroy_success: "Documento excluído com sucesso."
+    show:
+      title_model: "Título: "
+      author: "Autor: "
+      description: "Descrição: "
+      keywords: "Palavras-chave: "
+      published_in: "Ano de Publicação: "
+      publisher: "Editora: "     
   users: 
     index:
       title: "Todos os usuários"
