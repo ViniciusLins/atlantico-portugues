@@ -17,7 +17,7 @@ describe "Documents" do
 
     describe "should have right links" do 
       it { should have_link(I18n.t('documents.new'), href: new_document_path) } 
-      it { should have_link(I18n.t('documents.show'), href: document_path(document)) } 
+      it { should have_link(I18n.t('.documents.show_link'), href: document_path(document)) } 
       it { should have_link(I18n.t('documents.edit'),     href: edit_document_path(document)) } 
       it { should have_link(I18n.t('documents.destroy')) } 
     end
