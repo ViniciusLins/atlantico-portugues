@@ -76,6 +76,7 @@ group :development, :test do
     gem 'capistrano', '~> 3.0'
     gem 'capistrano-rails'
     gem 'capistrano-rvm'
+    gem 'capistrano-bundler'
 end
 
 group :assets do
