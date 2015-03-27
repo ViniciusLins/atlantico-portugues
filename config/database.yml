@@ -29,3 +29,5 @@ test:
 production:
   <<: *default
   database: atlantico-portugues-db 
+  username: atlantico-portugues 
+  password: atlantico 
