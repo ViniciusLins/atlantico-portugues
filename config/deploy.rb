@@ -1,5 +1,3 @@
-require "bundler/capistrano"
-default_run_options[:pty] = true
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
@@ -38,8 +36,6 @@ set :repo_url, 'git@github.com:ViniciusLins/atlantico-portugues.git'
 
 namespace :deploy do
 
-  APP_FOLDER = "/var/www/atlantico-portugues/current"
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -57,26 +53,5 @@ namespace :deploy do
   end
 
   after :publishing, :restart
-
-  desc "Start the Thin processes"
-  task :start do
-    run  <<-CMD
-      cd #{APP_FOLDER}; bundle exec thin start 
-    CMD
-  end
-
-  desc "Stop the Thin processes"
-  task :stop do
-    run <<-CMD
-      cd #{APP_FOLDER}; bundle exec thin stop
-    CMD
-  end
-
-  desc "Restart the Thin processes"
-  task :restart do
-    run <<-CMD
-      cd #{APP_FOLDER}; bundle exec thin restart
-    CMD
-  end
 
 end
