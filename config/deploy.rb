@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+default_run_options[:pty] = true
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
