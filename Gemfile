@@ -14,6 +14,9 @@ gem 'faker', '1.4.3'
 # Database postgres
 gem 'pg', '0.18.1'
 
+# web server
+gem 'thin'
+
 # ------------------------------------
 # INTERFACE GEMS
 # -----------------------------------
@@ -69,6 +72,10 @@ group :development, :test do
     gem 'spring', '1.3.1'
 
     gem 'annotate', '~> 2.4.1.beta'
+    # Deployment 
+    gem 'capistrano', '~> 3.0'
+    gem 'capistrano-rails'
+    gem 'capistrano-rvm'
 end
 
 group :assets do
@@ -109,5 +116,5 @@ end
 
 group :production do
   # Need add this gem to asset pipeline works as expected in heroku server
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
 end
