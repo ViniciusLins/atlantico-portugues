@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe "Authentication" do
   subject { page }
-  let(:signin) { "Entrar" }
+  let(:signin) { I18n.t('signin_title') }
 
   describe "signin page" do
     before { visit signin_path }
 
-    it { should have_selector('h1',     text: 'Entrar') }
-    it { should have_title('Entrar') }
+    it { should have_selector('h1', text: I18n.t('signin_title')) }
+    it { should have_title( I18n.t('signin_title')) }
   end
 
   describe "signin" do
@@ -19,25 +19,25 @@ describe "Authentication" do
       before { sign_in user } 
 
       describe "should have right links" do
-        it { should have_link('Páginas', href: pages_path) }
-        it { should have_link('Usuários',        href: users_path) }
-        it { should have_link('Perfil',      href: user_path(user)) }
-        it { should have_link('Configurações',     href: edit_user_path(user)) }
-        it { should have_link('Sair',     href: signout_path) }
-        it { should_not have_link('Entrar',  href: signin_path) }
+        it { should have_link(I18n.t('pages_link'), href: pages_path) }
+        it { should have_link(I18n.t('users_link'),        href: users_path) }
+        it { should have_link(I18n.t('profile'),      href: user_path(user)) }
+        it { should have_link(I18n.t('config'),     href: edit_user_path(user)) }
+        it { should have_link(I18n.t('signout_title'),     href: signout_path) }
+        it { should_not have_link(I18n.t('signin_title'),  href: signin_path) }
       end
     end
 
     describe "with invalid information" do
       before { click_button signin }
 
-      it { should have_title('Entrar') }
-      it { should have_error_message('Invalid') }
+      it { should have_title(I18n.t('signin_title')) }
+      it { should have_error_message(I18n.t('autentication_failed')) }
 
       describe "after visiting another page" do
-        before { click_link "Home" }
+        before { click_link I18n.t('home_page') }
 
-        it { should_not have_error_message('Invalid') }
+        it { should_not have_error_message(I18n.t('autentication_failed')) }
       end
     end
 
@@ -48,17 +48,17 @@ describe "Authentication" do
       it { should have_title(user.name) }
         
       describe "should have right links" do
-        it { should_not have_link('Páginas', href: pages_path) }
-        it { should have_link('Usuários',        href: users_path) }
-        it { should have_link('Perfil',      href: user_path(user)) }
-        it { should have_link('Configurações',     href: edit_user_path(user)) }
-        it { should have_link('Sair',     href: signout_path) }
-        it { should_not have_link('Entrar',  href: signin_path) }
+        it { should_not have_link(I18n.t('pages_link'), href: pages_path) }
+        it { should have_link(I18n.t('users_link'),        href: users_path) }
+        it { should have_link(I18n.t('profile'),      href: user_path(user)) }
+        it { should have_link(I18n.t('config'),     href: edit_user_path(user)) }
+        it { should have_link(I18n.t('signout_title'),     href: signout_path) }
+        it { should_not have_link(I18n.t('signin_title'),  href: signin_path) }
       end
 
       describe "followed by sign out" do
-        before { click_link "Sair" }
-        it { should have_link("Entrar") }
+        before { click_link I18n.t('signout_title') }
+        it { should have_link(I18n.t('signin_title')) }
       end
 
     end
@@ -73,18 +73,18 @@ describe "Authentication" do
 
         describe "when attempting to visit create user page" do
           before { visit signup_path }
-          it { should have_title('Entrar') }
+          it { should have_title(I18n.t('signin_title')) }
         end
 
         describe "when attempting to visit a protected page" do
           before { visit edit_user_path(user) }
-          it { should have_title('Entrar') }
+          it { should have_title(I18n.t('signin_title')) }
 
           describe "after signing in" do
             before do
               fill_in I18n.t(:email),      with: user.email
               fill_in I18n.t(:password),   with: user.password
-              click_button "Entrar"
+              click_button I18n.t('signin_title')
             end
 
             it "should render the desired protected page" do
@@ -100,7 +100,7 @@ describe "Authentication" do
 
         describe "visiting the users index" do
           before { visit users_path }
-          it { should have_title('Entrar') }
+          it { should have_title(I18n.t('signin_title')) }
         end
       end
 
@@ -160,7 +160,7 @@ describe "Authentication" do
         describe "when visiting paginas page" do
           before { visit pages_path }
           it "should redirect to home" do
-            should_not have_title('Páginas')
+            should_not have_title(I18n.t('pages_title'))
           end
 
         end
@@ -168,7 +168,7 @@ describe "Authentication" do
         describe "when visiting edit page" do
           before { visit edit_page_path(mypage) }
           it "should redirect to home" do
-            should_not have_title('Editar Página')
+            should_not have_title(I18n.t('pages.edit.title'))
           end
         end
 
@@ -228,7 +228,7 @@ describe "Authentication" do
         describe "when visiting paginas page" do
           before { visit pages_path }
           it "should redirect to home" do
-            should_not have_title('Páginas')
+            should_not have_title(I18n.t('pages_title'))
           end
         end
 

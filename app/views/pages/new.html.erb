@@ -1,6 +1,6 @@
-<% provide(:title, 'Nova Página') %>
-<h1>Nova Página</h1>
+<% provide(:title, t('.title')) %>
+<h1><%= t('.title') %></h1>
 
-<%= render 'form', btn_name: "Criar página"%>
+<%= render 'form', btn_name: t('.create')%>
 
-<%= link_to 'Voltar', pages_path %>
+<%= link_to t('.back'), pages_path %>
