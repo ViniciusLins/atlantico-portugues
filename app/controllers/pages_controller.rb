@@ -31,7 +31,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         format.html do 
-          flash[:success] = 'Página criada com sucesso.'
+          flash[:success] = I18n.t('pages_created') 
           redirect_to @page
         end
         format.json { render :show, status: :created, location: @page }
@@ -48,7 +48,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.update(page_params)
         format.html do 
-          flash[:success] = 'Página atualizada com sucesso.'
+          flash[:success] = I18n.t('pages_updated') 
           redirect_to @page
         end
         format.json { render :show, status: :ok, location: @page }
@@ -65,7 +65,7 @@ class PagesController < ApplicationController
     @page.destroy
     respond_to do |format|
       format.html do
-        flash[:success] = 'A página foi excluída com sucesso.'
+        flash[:success] = I18n.t('pages_deleted')
         redirect_to pages_url
       end 
       format.json { head :no_content }
