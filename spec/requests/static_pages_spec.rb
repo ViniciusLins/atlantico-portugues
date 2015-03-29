@@ -5,7 +5,7 @@ describe "Static pages" do
   subject{ page }
 
   before(:all) do
-    @home_page = FactoryGirl.create(:page, title: I18n.t('home')) 
+    @home_page = FactoryGirl.create(:page, title: I18n.t('home_page')) 
     @help_page = FactoryGirl.create(:page, title: I18n.t('help')) 
     @about_page = FactoryGirl.create(:page, title: I18n.t('about'))
 #    @contact_page = FactoryGirl.create(:page, title: I18n.t('contact'))
@@ -19,7 +19,7 @@ describe "Static pages" do
   describe "Home page" do
     before { visit root_path }
 
-    it { should_not have_selector('title', text: I18n.t('home')) }
+    it { should_not have_selector('title', text: I18n.t('home_page')) }
     it { should have_content(@home_page.body) }
 
     describe "when user search documents"  do
@@ -77,7 +77,7 @@ describe "Static pages" do
     should have_selector 'title', text: full_title(I18n.t('help'))
     click_link I18n.t('contact')
     should have_selector 'title', text: full_title(I18n.t('contact'))
-    click_link I18n.t('home')
+    click_link I18n.t('home_page')
     click_link "atlântico português"
     should have_selector 'title', text: full_title('')
     click_link I18n.t('documents.title')
