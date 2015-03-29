@@ -62,6 +62,13 @@ pt-BR:
   save_changes: "Salvar alterações"
   update_profile: "Atualizar perfil"
   create_user: "Criar usuário"
+  home:
+    search: "Busca"
+    btn-search: "Pesquisar"
+    results:
+      title: "Resultados"
+      found: "encontrados"
+      result: "resultados"
   documents:
     title: "Documentos"
     new: "Novo documento"
@@ -79,6 +86,10 @@ pt-BR:
     publisher: "Editor"
     file: "Arquivo"
     save: "Salvar documento"
+    search: 
+      title: "Resultados"
+      result: "resultado"
+      found: "encontrado"
     messages: 
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."

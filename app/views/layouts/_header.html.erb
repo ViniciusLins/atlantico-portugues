@@ -1,32 +1,15 @@
 <header class="navbar navbar-default navbar-fixed-top">
 <div class="container">
   <%= link_to "atlântico português", root_path, id: "logo" %>
+  <%= form_tag search_path, { method: "get", class: "navbar-form navbar-left" }  do  %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], class: "form-control" %>
+    </div>
+      <%= submit_tag t('home.btn-search'), name: t('home.btn-search'), class: "btn-search btn btn-default" %>
+    <% end %>
   <nav>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to t('home'), root_path %></li>
-      <li><%= link_to t('documents.title'),  documents_path %></li>
-      <% if signed_in? %>
-        <% if current_user.admin? %>
-          <li><%= link_to t('pages_link'), pages_path %></li>
-        <% end %>
-        <li><%= link_to t('users_link'), users_path %></li>
-        <li id="fat-menu" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Minha Conta <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to t('profile'), current_user %></li>
-            <li><%= link_to t('config'), edit_user_path(current_user) %></li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to t('signout_title'), signout_path, method: "delete" %>
-            </li>
-          </ul>
-        </li>
-      <% else %>
-        <li><%= link_to t('signin_title'), signin_path %></li>
-      <% end %>
-      <li><%= link_to t('help'), help_path %></li>
+      <%= render 'shared/navbar' %>
     </ul>
   </nav>
 </div>

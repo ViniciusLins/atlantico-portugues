@@ -14,6 +14,9 @@ gem 'faker', '1.4.3'
 # Database postgres
 gem 'pg', '0.18.1'
 
+# web server
+gem 'thin'
+
 # ------------------------------------
 # INTERFACE GEMS
 # -----------------------------------
@@ -28,10 +31,18 @@ gem 'bootsy', '2.1.0'
 # Handle upload documents
 gem 'paperclip', '~> 4.2'
 
+gem 'pdfjs_rails', '0.0.1'
+
+# ------------------------------------
+# UTILITY GEMS
+# -----------------------------------
+
+# Sunspot is advanced search gem
+gem 'sunspot_rails', '2.1.1'
+gem 'sunspot_solr', '2.1.1'
+
 # Rails erd gem to generate model ER
 gem 'rails-erd', '1.3.1'
-
-gem 'pdfjs_rails', '0.0.1'
 
 
 
@@ -61,6 +72,11 @@ group :development, :test do
     gem 'spring', '1.3.1'
 
     gem 'annotate', '~> 2.4.1.beta'
+    # Deployment 
+    gem 'capistrano', '~> 3.0'
+    gem 'capistrano-rails'
+    gem 'capistrano-rvm'
+    gem 'capistrano-bundler'
 end
 
 group :assets do
@@ -71,7 +87,7 @@ group :assets do
     # Use CoffeeScript for .coffee assets and views
     gem 'coffee-rails', '4.1.0'
     # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-    # gem 'therubyracer', platforms: :ruby
+    gem 'therubyracer', platforms: :ruby
 end
 
 # Use jquery as the JavaScript library
@@ -101,5 +117,5 @@ end
 
 group :production do
   # Need add this gem to asset pipeline works as expected in heroku server
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
 end
