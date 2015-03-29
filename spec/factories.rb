@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :page do
-    title I18n.t('home')
+    title I18n.t('home_page')
     body  "Bem vindo ao Atlantico Portugues!"
   end
 
