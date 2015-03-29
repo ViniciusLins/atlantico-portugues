@@ -39,7 +39,7 @@ pt-BR:
   hello: "Hello world"
   about: "Sobre"
   contact: "Entre em contato"
-  home: "Home"
+  home_page: "Home"
   pages_link: "Páginas"
   pages_created: "Página criada com sucesso."
   pages_updated: "Página atualizada com sucesso."
