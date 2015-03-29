@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Usuário criado com sucesso!"
+      flash[:success] = I18n.t('users_created') 
       redirect_to root_path 
     else
       render 'new'
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = I18n.t('users_updated')
       sign_in @user
       redirect_to @user
     else
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed"
+    flash[:success] = I18n.t('users_deleted')
     redirect_to users_path
   end
 

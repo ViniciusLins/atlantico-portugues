@@ -50,11 +50,11 @@ describe "Static pages" do
   it "should have the right links on the layout" do
     visit root_path
     click_link I18n.t('about')
-    should have_selector 'title', text: full_title('Sobre Nós')
+    should have_selector 'title', text: full_title(I18n.t('about'))
     click_link I18n.t('help')
-    should have_selector 'title', text: full_title('Ajuda')
+    should have_selector 'title', text: full_title(I18n.t('help'))
     click_link I18n.t('contact')
-    should have_selector 'title', text: full_title('Entre em contato')
+    should have_selector 'title', text: full_title(I18n.t('contact'))
     click_link I18n.t('home')
     click_link "atlântico português"
     should have_selector 'title', text: full_title('')
