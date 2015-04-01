@@ -326,7 +326,7 @@ DEPENDENCIES
   jbuilder (= 2.2.6)
   jquery-rails (= 4.0.3)
   paperclip (~> 4.2)
-  passenger
+  passenger (= 5.0.6)
   pdfjs_rails (= 0.0.1)
   pg (= 0.18.1)
   rails (= 4.2.0)
