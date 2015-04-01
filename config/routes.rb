@@ -1,22 +1,25 @@
 Rails.application.routes.draw do
-  resources :documents
-  get '/search',  to: 'documents#search'
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  resources :pages
+  scope '/atlantico' do
+    root to: 'static_pages#home'
 
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+    resources :documents
+    get '/search',  to: 'documents#search'
 
-  root 'static_pages#home'
+    mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+    resources :pages
 
-  get '/signup', to: 'users#new'
-  get '/signin', to: 'sessions#new'
-  delete '/signout', to: 'sessions#destroy'
+    resources :users
+    resources :sessions, only: [:new, :create, :destroy]
 
-  get '/help',    to: 'static_pages#help'
-  get '/about',   to: 'static_pages#about'
-  get '/contact', to: 'static_pages#contact'
+    get '/signup', to: 'users#new'
+    get '/signin', to: 'sessions#new'
+    delete '/signout', to: 'sessions#destroy'
+
+    get '/help',    to: 'static_pages#help'
+    get '/about',   to: 'static_pages#about'
+    get '/contact', to: 'static_pages#contact'
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
