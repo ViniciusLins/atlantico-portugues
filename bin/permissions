@@ -1,0 +1,7 @@
+#!/bin/bash
+chown -R www-data:www-data .   # or some other user
+chmod 755 .
+# populate the app directory with your files, if you haven't done so already
+chown -R www-data:www-data log
+chmod 755 log   # see notes
+chmod 644 log/* # see notes
