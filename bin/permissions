@@ -5,3 +5,11 @@ chmod 755 .
 chown -R www-data:www-data log
 chmod 755 log   # see notes
 chmod 644 log/* # see notes
+
+mkdir -p public/uploads/tmp  # might not exist yet
+chown -R www-data:www-data public/uploads
+chmod 755 public/uploads
+chmod 755 public/uploads/tmp
+chown -R www-data:www-data public/system
+chmod 755 public/system
+chmod 755 public/system

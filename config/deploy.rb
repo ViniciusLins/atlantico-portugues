@@ -36,6 +36,14 @@ set :repo_url, 'git@github.com:ViniciusLins/atlantico-portugues.git'
 
 namespace :deploy do
 
+  before "deploy:restart", :symlink_directories
+  task :symlink_directories do
+    on roles(:app) do
+      execute "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+      execute "ln -nfs #{shared_path}/system #{release_path}/public/system"
+    end
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
