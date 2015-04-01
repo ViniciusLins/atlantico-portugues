@@ -234,6 +234,10 @@ input, textarea, select, .uneditable-input {
   float: right;
 }
 
+.paginate-center {
+  text-align: center;
+}
+
 /* documents index */
 
 #btn-new-document {
@@ -244,3 +248,10 @@ input, textarea, select, .uneditable-input {
 #document_description {
   height: 200px !important;
 }
+
+/* page index */
+
+#btn-new-page {
+  float: right;
+}
+

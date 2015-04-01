@@ -28,30 +28,14 @@ end
 
 def create_pages
   Page.create!(title: "Home",
-              body: 
-              "<div class='center hero-unit'>
-                <h1>Bem vindo ao Atlântico Português</h1>
-                <h2>
-                  Esta é a página inicial do Atlântico Português 
-                </h2>
-              </div>
-              ")
+              body: "<h1>Bem vindo ao Atlântico Português </h1>
+                    <h2>Esta é a página inicial do Atlântico Português</h2>")
   Page.create!(title: "Ajuda",
-              body: 
-              "<div class='center hero-unit'>
-                <h1>Ajuda</h1>
-                <h2>
-                </h2>
-              </div>
-              ")
+              body: "<h1>Ajuda</h1>
+                    <h2>Ajuda</h2>")
   Page.create!(title: "Sobre Nós",
-              body: 
-              "<div class='center hero-unit'>
-                <h1>Sobre Nós</h1>
-                <h2>
-                </h2>
-              </div>
-              ")
+              body: "<h1>Sobre Nós</h1>
+                    <h2>sobre...</h2>")
 end
 
 def create_documents
