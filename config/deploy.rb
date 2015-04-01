@@ -3,6 +3,7 @@ lock '3.4.0'
 
 set :application, 'atlantico-portugues'
 set :repo_url, 'git@github.com:ViniciusLins/atlantico-portugues.git'
+#set :branch, 'iss54-bug-images-erased'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -39,6 +40,7 @@ namespace :deploy do
   before "deploy:restart", :symlink_directories
   task :symlink_directories do
     on roles(:app) do
+      execute "rm -Rf #{release_path}/public/uploads"
       execute "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
       execute "ln -nfs #{shared_path}/system #{release_path}/public/system"
     end
