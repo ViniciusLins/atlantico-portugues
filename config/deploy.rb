@@ -3,7 +3,7 @@ lock '3.4.0'
 
 set :application, 'atlantico-portugues'
 set :repo_url, 'git@github.com:ViniciusLins/atlantico-portugues.git'
-set :branch, 'iss54-bug-images-erased'
+#set :branch, 'iss54-bug-images-erased'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
