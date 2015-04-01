@@ -2,7 +2,7 @@
 <div class="container">
   <%= link_to "atlântico português", root_path, id: "logo" %>
   <%= form_tag search_path, { method: "get", class: "navbar-form navbar-left" }  do  %>
-    <div class="form-group">
+    <div id="search-container" class="form-group">
       <%= text_field_tag :search, params[:search], class: "form-control" %>
     </div>
       <%= submit_tag t('home.btn-search'), name: t('home.btn-search'), class: "btn-search btn btn-default" %>

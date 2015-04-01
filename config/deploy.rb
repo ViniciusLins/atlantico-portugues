@@ -40,6 +40,7 @@ namespace :deploy do
   before "deploy:restart", :symlink_directories
   task :symlink_directories do
     on roles(:app) do
+      execute "rm -Rf #{release_path}/public/uploads"
       execute "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
       execute "ln -nfs #{shared_path}/system #{release_path}/public/system"
     end
