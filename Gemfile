@@ -120,4 +120,4 @@ group :production do
   # gem 'rails_12factor'
 end
 
-gem 'passenger'
+gem 'passenger', '5.0.6'
