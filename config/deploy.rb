@@ -48,6 +48,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      execute "cd #{deploy_to}/current && bin/permissions"
       execute "service nginx restart"  ## -> line you should add
     end
   end
