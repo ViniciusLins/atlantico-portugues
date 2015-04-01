@@ -1,9 +1,9 @@
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
-# You can define all roles on a single server, or split them:
-
-# server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
+# You can define all roles on a single server, or split them: 
+#
+# server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value 
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
@@ -59,4 +59,4 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-server '128.199.43.38', user: 'root', roles: %w[web app]
+server '128.199.43.38', user: 'niltonvasques', roles: %w[web app]

@@ -48,7 +48,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "service thin restart"  ## -> line you should add
+      execute "service nginx restart"  ## -> line you should add
     end
   end
 
