@@ -38,8 +38,6 @@ namespace :deploy do
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      execute "rake sunspot:solr:start RAILS_ENV=production"
-      execute "rake sunspot:reindex RAILS_ENV=production"
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
@@ -50,10 +48,17 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      execute "rake sunspot:solr:start RAILS_ENV=production"
+      execute "rake sunspot:reindex RAILS_ENV=production"
       execute "service nginx restart"  ## -> line you should add
     end
   end
 
+  task :prepare do
+      execute "rake sunspot:solr:stop RAILS_ENV=production"
+  end
+
   after :publishing, :restart
+  before :deploy, :prepare 
 
 end
