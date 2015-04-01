@@ -14,8 +14,7 @@
 
 # Defines a role with one or multiple servers. The primary server in each
 # group is considered to be the first unless any  hosts have the primary
-# property set. Specify the username and a domain or IP for the server.
-# Don't use `:all`, it's a meta role.
+# property set. Specify the username and a domain or IP for the server.  # Don't use `:all`, it's a meta role.
 
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
@@ -59,4 +58,4 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-server '128.199.43.38', user: 'niltonvasques', roles: %w[web app]
+server '128.199.43.38', user: 'root', roles: %w[web app]
