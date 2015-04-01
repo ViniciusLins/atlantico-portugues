@@ -1,11 +1,12 @@
 <tr>
-  <td><%= page.title %></td>
-  <td><%= page.body %></td>
-  <td><%= link_to t('.view'), page,
-      class: "btn btn-default" %></td>
-  <td><%= link_to t('.edit'), edit_page_path(page),
-      class: "btn btn-default" %></td>
-  <td><%= link_to t('.delete'), page, 
+  <td ><%= page.title %></td>
+  <td>
+    <div id="btn-new-page">
+    <%= link_to t('.edit'), edit_page_path(page),
+      class: "btn btn-default" %>
+    <%= link_to t('.delete'), page, 
       class: "btn btn-danger",
-    method: :delete, data: { confirm: t('.confirmation') } %></td>
+      method: :delete, data: { confirm: t('.confirmation') } %>
+    </div>
+  </td>
 </tr>

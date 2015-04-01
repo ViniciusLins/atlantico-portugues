@@ -18,7 +18,7 @@ describe "User pages" do
     describe "pagination" do
       it "should list each user for first page" do
         User.paginate(page: 1).each do |user|
-          should have_selector('li', text: user.name)
+          should have_selector('td', text: user.name)
         end
       end
     end
@@ -131,7 +131,7 @@ describe "User pages" do
     describe "page" do
       it { should have_selector('h1',     text: I18n.t(:update_profile)) }
       it { should have_title(I18n.t(:update_profile)) }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
+      it { should_not have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do

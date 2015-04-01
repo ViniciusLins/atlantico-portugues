@@ -15,11 +15,11 @@ describe "Pages" do
     it { should have_title( I18n.t('pages.index.title')) }
     it { should have_selector('h1', text: I18n.t('pages.index.title')) }
     it { should have_link(I18n.t('pages.index.new'), href: new_page_path) } 
-    it { should have_link(I18n.t('pages.page.view'), href: page_path(mypage)) } 
+    it { should_not have_link(I18n.t('pages.page.view'))} 
     it { should have_link(I18n.t('pages.page.edit'),     href: edit_page_path(mypage)) } 
     it { should have_link(I18n.t('pages.page.delete')) } 
     it { should have_content(mypage.title) }
-    it { should have_content(mypage.body) }
+    it { should_not have_content(mypage.body) }
 
     describe "delete links" do
       it "should be deleted page" do

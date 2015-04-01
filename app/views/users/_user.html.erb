@@ -1,9 +1,12 @@
-<li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to t('.delete'), user, 
+<tr>
+  <td>
+    <%= link_to user.name, user %>
+  </td>
+  <td>
+    <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to t('.delete'), user, 
         class: "btn btn-danger",
         method: :delete, confirm: t('.confirmation')  %>
-  <% end %>
-</li>
+    <% end %>
+  </td>
+</tr>
