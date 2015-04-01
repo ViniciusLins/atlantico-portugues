@@ -163,6 +163,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    passenger (5.0.6)
+      rack
+      rake (>= 0.8.1)
     pdfjs_rails (0.0.1)
     pg (0.18.1)
     power_assert (0.2.3)
@@ -323,6 +326,7 @@ DEPENDENCIES
   jbuilder (= 2.2.6)
   jquery-rails (= 4.0.3)
   paperclip (~> 4.2)
+  passenger
   pdfjs_rails (= 0.0.1)
   pg (= 0.18.1)
   rails (= 4.2.0)
