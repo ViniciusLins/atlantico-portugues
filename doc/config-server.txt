@@ -1,0 +1,122 @@
+Programas necessários para a configuração do servidor
+
+1 - curl 7.26.0
+
+2 - rvm 1.26.10 (latest)
+
+-----------------------------------------------------
+
+Ambiente de Instalação
+
+Debian 7.8 (Wheezy) - 64 bits
+Kernel 3.2.0-4-amd64
+
+# Instalando dependência necessária para a instalação do RVM
+
+1 - aptitude install curl # curl 7.26.0 
+
+# Instalando o gerenciador de versões do ruby RVM
+
+2 - \curl -L https://get.rvm.io | bash -s stable
+
+# Caso o sistema não possua a chave gpg do repositório do rvm, é necessária a importação,
+# utilizando um dos comandos abaixo. Após a importação das chaves, rodar novamente o comando 2.
+
+2.a  - command curl -sSL https://rvm.io/mpapis.asc | gpg --import - 
+2.b  - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 
+
+# Ao final da instalação do RVM, será informado o caminho do arquivo sh, 
+# necessário para inicilizar o rvm no sistema. Este caminho pode variar de sistema para sistema, mas
+# No nosso caso foi source /etc/profile.d/rvm.sh
+
+# Execute então o arquivo rvm.sh, no caminho informado.
+
+3 - source /etc/profile.d/rvm.sh 
+
+# Instalar as dependências do RVM, através do comando rvm requirements.
+# Em nosso foram instaladas as seguintes bibliotecas no sistema:
+#     gawk, g++, gcc, make, libc6-dev, libreadline6-dev, zlib1g-dev, libssl-dev, libyaml-dev, libsqlite3-dev, 
+#     sqlite3, autoconf, libgdbm-dev, libncurses5-dev, automake, libtool, bison, pkg-config, libffi-dev
+
+4 - rvm requirements
+
+# Instalar o ambiente ruby através do rvm.
+
+5 - rvm install 2.2.1 
+
+# Definindo a versão do ruby a ser utilizada.
+
+6 - rvm --default use ruby-2.2.1
+
+# Instalando o framework rails
+
+7 - gem install --no-rdoc --no-ri rails '4.2.1' 
+
+# Instalando o web-server para ruby on rails - passenger
+
+8 - gem install passenger 
+
+9 - passenger-install-nginx-module 
+
+9.1 - Pressionar enter para avançar na instalação
+
+9.2 - Selecionar apenas a opção ruby
+
+  # Durante a instalação, podem ocorrer alguns comportamentos inesperados, como a falta de dependências.
+  # Portanto, o passo a seguir pode se fazer necessário. E em seguida retornar ao passo 9.
+
+  9.2.a - aptitude install libcurl4-openssl-dev
+
+  # Caso o sistema possua memória ram inferior a 1024 MB e não possua área de swap, 
+  # o phusion passenger irá alertar, que é re
+  # comendado disponibilizar mais memória.
+
+  # Criando um arquivo swap temporário
+  9.2.b - dd if=/dev/zero of=/swap bs=1M count=1024
+  9.2.b - mkswap /swap
+  9.2.b - swapon /swap
+  9.2.b - Retornar para o passo 9
+
+# Ao finalizar o fluxo anterior, a instalação irá recomendar a compilação do servidor
+# HTTP NGINX, que foi o servidor utilizado no projeto, por possuir uma melhor compatibilidade
+# com o rails.
+
+9.3 - Escolher a opção 1      
+9.4 - Escolher o local de instalação do NGINX
+
+# Ao finalizar a instalação do NGINX, será informado onde se encontra o arquivo de configuração do servidor.
+# Por exemplo: /opt/nginx/conf/nginx.conf
+
+9.5 - Pressionar enter
+
+10 - cd /var
+11 - mkdir www
+12 - aptitude install git
+13 - git clone https://github.com/ViniciusLins/atlantico-portugues.git
+14 - cd atlantico-portugues
+15 - aptitude install postgresql
+16 - sudo -u postgres createuser -d -R -P atlantico-portugues
+16.1 - Definir a senha do usuário postgres
+17 - sudo -u postgres createdb -O atlantico-portugues atlantico-portugues-db
+18 - aptitude install You need to install libpq-dev
+18.a - aptitude install postgresql-server-dev-X.Y
+18 - bundle install
+19 - aptitude install imagemagick
+20 - export RAILS_ENV=production
+21 - rake db:migrate
+22 - aptitude install openjdk-7-jdk
+23 - rake sunspot:solr:start
+24 - rake db:populate
+25 - rake assets:precompile
+26 - Editar o arquivo /opt/nginx/nginx.conf com as configurações do servidor
+server {
+        listen       80;
+        server_name  atlanticoportugues.ufba.br;
+        root   /var/www/atlantico-portugues/public;
+
+        passenger_enabled on;
+}
+27 - curl https://www.linode.com/docs/assets/660-init-deb.sh -o /etc/init.d/nginx
+28 - chmod +x /etc/init.d/nginx
+29 - /usr/sbin/update-rc.d -f nginx defaults
+30 - service nginx start

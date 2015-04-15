@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Freeze the ruby version 
-ruby '2.2.0'
+ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 
 
 # This gem is a used for encrypt password of user, by has_secure_password pattern
