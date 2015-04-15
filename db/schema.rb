@@ -16,21 +16,21 @@ ActiveRecord::Schema.define(version: 20150322064726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bootsy_image_galleries", force: :cascade do |t|
+  create_table "bootsy_image_galleries", force: true do |t|
     t.integer  "bootsy_resource_id"
     t.string   "bootsy_resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "bootsy_images", force: :cascade do |t|
+  create_table "bootsy_images", force: true do |t|
     t.string   "image_file"
     t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "documents", force: :cascade do |t|
+  create_table "documents", force: true do |t|
     t.string   "title"
     t.string   "author"
     t.text     "description"
@@ -45,21 +45,21 @@ ActiveRecord::Schema.define(version: 20150322064726) do
     t.datetime "file_updated_at"
   end
 
-  create_table "pages", force: :cascade do |t|
+  create_table "pages", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

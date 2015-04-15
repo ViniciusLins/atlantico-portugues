@@ -40,14 +40,29 @@ end
 
 def create_documents
   100.times do |n|
+    title = Faker::Lorem.sentence
+    author        = Faker::Name.name
+    description   = Faker::Lorem.paragraph(10)
+    keywords      = Faker::Lorem.words(6).join(", ")
+    published_year = Faker::Date.between(1000.years.ago, Date.today).year
+    publisher     = Faker::Company.name
+    file          = File.open(Dir['spec/assets/*.pdf'].sample)
+    # puts "Inserting"
+    # puts "title #{title}"
+    # puts "author #{author}"
+    # puts "description #{description}"
+    # puts "keywords #{keywords}"
+    # puts "published_year #{published_year}"
+    # puts "publisher #{publisher}"
+    # puts "file #{file}"
     Document.create!(
-      title: Faker::Lorem.sentence,
-      author: Faker::Name.name,
-      description: Faker::Lorem.paragraph(10),
-      keywords: Faker::Lorem.words(6),
-      published_year: Faker::Date.between(1000.years.ago, Date.today).year,
-      publisher: Faker::Company.name,
-      file: File.open(Dir['spec/assets/*.pdf'].sample)
+      title: title,
+      author: author,
+      description: description,
+      keywords: keywords,
+      published_year: published_year,
+      publisher: publisher,
+      file: file 
     )
   end
 end

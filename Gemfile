@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Freeze the ruby version 
-ruby '2.2.1'
+ruby '2.1.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.1.8'
 
 
 # This gem is a used for encrypt password of user, by has_secure_password pattern
@@ -91,7 +91,7 @@ group :assets do
 end
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '4.0.3'
+gem 'jquery-rails', '3.1.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks', '2.5.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
