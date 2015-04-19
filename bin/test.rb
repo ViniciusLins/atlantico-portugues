@@ -8,7 +8,7 @@ Process.detach pid
 
 puts "Loading test environment"
 30.times do |n| 
-  progress = (n/30.0) * 100
+  progress = (n/30) * 100
   puts "#{progress} %"
   sleep 1
 end
