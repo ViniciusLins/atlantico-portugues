@@ -81,7 +81,7 @@ end
 
 group :assets do
     # Use SCSS for stylesheets
-    gem 'sass-rails', '4.0.3'
+    gem 'sass-rails', '4.0.2'
     # Use Uglifier as compressor for JavaScript assets
     gem 'uglifier', '2.7.0'
     # Use CoffeeScript for .coffee assets and views
