@@ -103,11 +103,11 @@ Kernel 3.2.0-4-amd64
 18 - bundle install
 19 - aptitude install imagemagick
 20 - export RAILS_ENV=production
-21 - rake db:migrate
+21 - bundle exec rake db:migrate
 22 - aptitude install openjdk-7-jdk
-23 - rake sunspot:solr:start
-24 - rake db:populate
-25 - rake assets:precompile
+23 - bundle exec rake sunspot:solr:start
+24 - bundle exec rake db:populate
+25 - bundle exec rake assets:precompile
 26 - Editar o arquivo /opt/nginx/nginx.conf com as configurações do servidor
 server {
         listen       80;
