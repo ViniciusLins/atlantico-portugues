@@ -22,6 +22,6 @@ FactoryGirl.define do
     published_year 1500
     publisher "Portuguese Goverment"
     file { fixture_file_upload(Rails.root.join('spec', 'assets', 'test.pdf'), 'application/pdf') } 
-    is_public false
+    is_private 0
   end
 end

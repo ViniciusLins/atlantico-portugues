@@ -194,12 +194,12 @@ describe "Authentication" do
         end
       
       describe "in the documents controller" do
-        let(:mypage) { FactoryGirl.create(:document) }
+        let(:mypage) { FactoryGirl.create(:document, is_private: 1) }
 
         describe "when searching documents" do
-          before { visit document_path }
+          after { visit document_path }
           it "not should show private documents" do
-            should_not have_title(I18n.t('documents.search.title'))
+            should have(Document, count: 0)
           end
 
         end
