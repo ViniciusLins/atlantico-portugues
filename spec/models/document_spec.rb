@@ -58,7 +58,7 @@ describe Document do
   end
 
   describe "when flag to is private is not seted  " do
-    before {@document.is_private = " "}
+    before {@document.is_private = false}
     it { should_not be_valid }
   end
 end
