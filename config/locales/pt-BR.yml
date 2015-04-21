@@ -84,12 +84,13 @@ pt-BR:
     keywords: "Palavras chave"
     published_year: "Ano de publicação"
     publisher: "Editor"
+    is_public: "Documento público"
     file: "Arquivo"
     save: "Salvar documento"
     search: 
       title: "Resultados"
-      result: "resultado"
-      found: "encontrado"
+      result: "resultado(s)"
+      found: "encontrado(s)"
     messages: 
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."

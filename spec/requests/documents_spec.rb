@@ -59,12 +59,13 @@ describe "Documents" do
       it { should have_error_message('') }
     end
 
-    describe "when submitting a valid form" do
+   describe "when submitting a valid form" do
       before do
         fill_in I18n.t('documents.title_model'),      with: "Sample Document"
         fill_in I18n.t('documents.author'),           with: "Sample Author"
         fill_in I18n.t('documents.keywords'),         with: "Sample, Document"
         attach_file I18n.t('documents.file'), "spec/assets/test.pdf"
+        check I18n.t('documents.is_public')
       end
       it "should create a document" do
         expect { click_button I18n.t('documents.save') }.to change(Document, :count).by(1)
@@ -86,6 +87,7 @@ describe "Documents" do
         fill_in I18n.t('documents.author'),           with: "Sample Author"
         fill_in I18n.t('documents.keywords'),         with: "Sample, Document"
         attach_file I18n.t('documents.file'), "spec/assets/invalid.exe"
+        check I18n.t('documents.is_public')
       end
 
       it "should show a error message" do

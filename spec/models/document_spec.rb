@@ -30,7 +30,7 @@ describe Document do
   it { should respond_to(:published_year) }
   it { should respond_to(:publisher) }
   it { should respond_to(:file) }
-
+  it { should respond_to(:is_private)}
   # Test validations
   describe "when title is not present" do
     before { @document.title = "  " }
@@ -57,4 +57,8 @@ describe Document do
     it { should_not be_valid }
   end
 
+  describe "when flag to is private is not seted  " do
+    before {@document.is_private = " "}
+    it { should_not be_valid }
+  end
 end

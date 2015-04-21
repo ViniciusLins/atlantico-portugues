@@ -192,6 +192,20 @@ describe "Authentication" do
            response.should redirect_to(signin_path) 
           end
         end
+      
+      describe "in the documents controller" do
+        let(:mypage) { FactoryGirl.create(:document) }
+
+        describe "when searching documents" do
+          before { visit document_path }
+          it "not should show private documents" do
+            should_not have_title(I18n.t('documents.search.title'))
+          end
+
+        end
+
+ 
+      
       end
     end
 
@@ -235,7 +249,7 @@ describe "Authentication" do
         describe "when visiting edit page" do
           before { visit edit_page_path(mypage) }
           it "should redirect to home" do
-            should_not have_title('Editar Página')
+            should_not have_title(I18n.t('pages.edit.title'))
           end
         end
 
