@@ -194,18 +194,24 @@ describe "Authentication" do
         end
       
       describe "in the documents controller" do
-        let(:mypage) { FactoryGirl.create(:document, is_private: 1) }
+        #let(:mypage) { FactoryGirl.create(:document, is_private: true) }
+        # WHen you uses let function from rspec, the statement inside { } only is 
+        # called, if you use mypage in some place. 
 
         describe "when searching documents" do
-          after { visit document_path }
-          it "not should show private documents" do
-            should have(Document, count: 0)
+          before do
+            FactoryGirl.create(:document, is_private: true)
+            visit root_path 
+            click_button search 
           end
-
-        end
-
- 
-      
+          #before { visit root_path }
+          #before { click_button search }
+          it "not should show private documents" do
+            # You need put the regex here. /^0 
+            # Probably this will work, but I dont have sure.. ok 
+            should_not have_selector('h2', text: /^0 #{I18n.t('documents.search.title')}/)
+          end
+        end 
       end
     end
 

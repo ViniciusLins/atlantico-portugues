@@ -24,6 +24,9 @@
       <%= f.label :file, t('documents.file') %><br>
       <%= f.file_field :file %>
 
+      <%= f.label :is_private, t('documents.is_private') %><br>
+      <%= f.input :is_private, :input_html => { :checked => false } %>
+
       <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
     <% end %>
   </div>
