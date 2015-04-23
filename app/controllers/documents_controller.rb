@@ -69,7 +69,7 @@ class DocumentsController < ApplicationController
         query_phrase_slop 5
         phrase_fields title:  2.0
         phrase_slop 2
-      with :is_private, 1
+      with :is_private, false
       end
 
       order_by :published_year, :desc
