@@ -63,12 +63,14 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def search
+  def search 
+    #here, we need a flag recieves the status of current_user 
     @search = Document.search do
       fulltext params[:search] do
         query_phrase_slop 5
         phrase_fields title:  2.0
         phrase_slop 2
+      with :is_private, false
       end
 
       order_by :published_year, :desc
