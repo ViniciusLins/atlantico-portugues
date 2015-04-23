@@ -209,7 +209,7 @@ describe "Authentication" do
           it "not should show private documents" do
             # You need put the regex here. /^0 
             # Probably this will work, but I dont have sure.. ok 
-            should_not have_selector('h2', text: /^0 #{I18n.t('documents.search.title')}/)
+            should have_selector('h2', text: /^0 #{I18n.t('documents.search.title')}/)
           end
         end 
       end
