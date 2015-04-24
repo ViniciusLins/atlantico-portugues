@@ -34,7 +34,7 @@ class Document < ActiveRecord::Base
     text :author 
     text :description
     text :publisher
-    boolean :is_public
+    boolean :is_private
 
     integer :published_year
   end

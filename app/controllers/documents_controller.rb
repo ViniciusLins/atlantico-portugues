@@ -1,4 +1,5 @@
-class DocumentsController < ApplicationController
+class DocumentsController < ApplicationController 
+  include SessionsHelper
   before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_filter :signed_in_user, only: [:new, :edit, :create, :update, :destroy]
 
@@ -65,11 +66,11 @@ class DocumentsController < ApplicationController
 
   def search
     @search = Document.search do
+      with :is_private, signed_in? ? true : nil
       fulltext params[:search] do
         query_phrase_slop 5
         phrase_fields title:  2.0
         phrase_slop 2
-      with :is_private, false
       end
 
       order_by :published_year, :desc

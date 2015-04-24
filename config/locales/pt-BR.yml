@@ -101,7 +101,10 @@ pt-BR:
       description: "Descrição: "
       keywords: "Palavras-chave: "
       published_in: "Ano de Publicação: "
-      publisher: "Editora: "     
+      publisher: "Editora: "
+      is_private: "Documento Privado: "
+      affirmation: "Sim"
+      negation: "Não"
   users: 
     index:
       title: "Todos os usuários"
