@@ -65,16 +65,30 @@ class DocumentsController < ApplicationController
   end
 
   def search
-    @search = Document.search do
-      with :is_private, signed_in? ? true : nil
-      fulltext params[:search] do
-        query_phrase_slop 5
-        phrase_fields title:  2.0
-        phrase_slop 2
-      end
+    if signed_in? 
+      @search = Document.search do
+      #with :is_private, signed_in? ? true : nil
+        fulltext params[:search] do
+          query_phrase_slop 5
+          phrase_fields title:  2.0
+          phrase_slop 2
+        end
 
-      order_by :published_year, :desc
-      paginate page: params[:page] 
+        order_by :published_year, :desc
+        paginate page: params[:page] 
+      end
+    else
+      @search = Document.search do
+        with :is_private, nil
+        fulltext params[:search] do
+          query_phrase_slop 5
+          phrase_fields title:  2.0
+          phrase_slop 2
+        end
+
+        order_by :published_year, :desc
+        paginate page: params[:page] 
+      end
     end
     @documents = @search.results
   end

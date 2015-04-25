@@ -1,4 +1,5 @@
 <%= provide(:title, @document.title) %>
+<% if @document.is_private != true || signed_in? %>
 <h1><%= @document.title %></h1>
 
 <p>
@@ -43,4 +44,5 @@ style="border: 0" width="100%" height="800" frameborder="0" scrolling="no"></ifr
 
 <% if signed_in? %>
   <%= link_to t('documents.edit'), edit_document_path(@document), class: "btn btn-default btn-lg" %> 
+<% end %>
 <% end %>
