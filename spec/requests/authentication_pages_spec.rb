@@ -199,10 +199,11 @@ describe "Authentication" do
         # called, if you use mypage in some place. 
 
         describe "when searching documents" do
-         before do
-            FactoryGirl.create(:document, is_private: "true")
+          self.use_transactional_fixtures = false
+          before do
+            FactoryGirl.create(:document, is_private: true)
             visit root_path 
-            click_button 'Pesquisar' 
+            click_button 'Pesquisar'
           end
          
           #before { visit root_path }
@@ -210,12 +211,26 @@ describe "Authentication" do
           it "should not show private documents" do
             # You need put the regex here. /^0 
             # Probably this will work, but I dont have sure.. ok 
-            should have_selector('h2', text:  '0 documentos encontrados')
+            should have_selector('h2', text: /^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
           end
         end
-
+        describe "when seeing index of documents" do
+          self.use_transactional_fixtures = false
+          before do
+            FactoryGirl.create(:document, is_private: true)
+            visit documents_path 
+          end
+         
+          #before { visit root_path }
+          #before { click_button search }
+          it "should not exibhit in the list the private documents" do
+            should have_selector('tr', count: 1)
+          end
+        end
+       
       end
     end
+  end
 
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
