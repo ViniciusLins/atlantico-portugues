@@ -192,26 +192,28 @@ describe "Authentication" do
            response.should redirect_to(signin_path) 
           end
         end
-      
+     
       describe "in the documents controller" do
         #let(:mypage) { FactoryGirl.create(:document, is_private: true) }
         # WHen you uses let function from rspec, the statement inside { } only is 
         # called, if you use mypage in some place. 
 
         describe "when searching documents" do
-          before do
-            FactoryGirl.create(:document, is_private: true)
+         before do
+            FactoryGirl.create(:document, is_private: "true")
             visit root_path 
-            click_button search 
+            click_button 'Pesquisar' 
           end
+         
           #before { visit root_path }
           #before { click_button search }
-          it "not should show private documents" do
+          it "should not show private documents" do
             # You need put the regex here. /^0 
             # Probably this will work, but I dont have sure.. ok 
-            should have_selector('h2', text: /^0 #{I18n.t('documents.search.title')}/)
+            should have_selector('h2', text:  '0 documentos encontrados')
           end
-        end 
+        end
+
       end
     end
 
