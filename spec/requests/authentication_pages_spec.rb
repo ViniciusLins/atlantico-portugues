@@ -223,11 +223,25 @@ describe "Authentication" do
          
           #before { visit root_path }
           #before { click_button search }
-          it "should not exibhit in the list the private documents" do
+          it "should not exhibit in the list the private documents" do
             should have_selector('tr', count: 1)
           end
         end
        
+        describe "when trying to access a private document without log in" do
+          self.use_transactional_fixtures = false
+          before do
+            FactoryGirl.create(:document, is_private: true, id:1)
+            visit '/documents/1' 
+          end
+         
+          #before { visit root_path }
+          #before { click_button search }
+          it "should not exhibit nothing about private documents" do
+            should_not have_selector('h1')
+          end
+        end
+ 
       end
     end
   end
