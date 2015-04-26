@@ -91,6 +91,7 @@ Spork.prefork do
 
       config.after(:each) do
           DatabaseCleaner.clean
+          Document.remove_all_from_index!
       end
 
       # This is clean paperclip files used in test

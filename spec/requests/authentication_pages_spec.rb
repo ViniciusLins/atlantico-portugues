@@ -209,10 +209,11 @@ describe "Authentication" do
           #before { visit root_path }
           #before { click_button search }
           it "should not show private documents" do
+            puts "#{Document.count} documents founded"
             # You need put the regex here. /^0 
             # Probably this will work, but I dont have sure.. ok 
-       #     should have_selector('h2', text: /^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
-             should have_content(/^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+            should have_selector('h2', text: /^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+       ##      should have_content(/^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
           end
         end
         describe "when seeing index of documents" do

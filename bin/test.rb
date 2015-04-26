@@ -13,6 +13,8 @@ puts "Loading test environment"
   sleep 1
 end
 
+system "bundle exec rake sunspot:solr:reindex RAILS_ENV=test"
+
 system "bundle exec guard"
 
 system "kill -SIGTERM #{pid}"
