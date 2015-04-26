@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:show, :edit, :update]
   before_filter :signed_in_user
   before_filter :admin_user
 
@@ -16,7 +16,6 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
   end
 
   # GET /pages/1/edit
@@ -62,14 +61,6 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
-    @page.destroy
-    respond_to do |format|
-      format.html do
-        flash[:success] = I18n.t('pages_deleted')
-        redirect_to pages_url
-      end 
-      format.json { head :no_content }
-    end
   end
 
   private
