@@ -18,48 +18,48 @@ ActiveRecord::Schema.define(version: 20150422005136) do
 
   create_table "bootsy_image_galleries", force: true do |t|
     t.integer  "bootsy_resource_id"
-    t.string   "bootsy_resource_type", limit: nil
+    t.string   "bootsy_resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "bootsy_images", force: true do |t|
-    t.string   "image_file",       limit: nil
+    t.string   "image_file"
     t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "documents", force: true do |t|
-    t.string   "title",             limit: nil
-    t.string   "author",            limit: nil
+    t.string   "title"
+    t.string   "author"
     t.text     "description"
-    t.string   "keywords",          limit: nil
+    t.string   "keywords"
     t.integer  "published_year"
-    t.string   "publisher",         limit: nil
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "file_file_name",    limit: nil
-    t.string   "file_content_type", limit: nil
+    t.string   "publisher"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.boolean  "is_private"
   end
 
   create_table "pages", force: true do |t|
-    t.string   "title",      limit: nil
+    t.string   "title"
     t.text     "body"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: true do |t|
-    t.string   "name",            limit: nil
-    t.string   "email",           limit: nil
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "password_digest", limit: nil
-    t.string   "remember_token",  limit: nil
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
+    t.string   "remember_token"
     t.boolean  "admin"
   end
 

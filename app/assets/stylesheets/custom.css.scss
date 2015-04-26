@@ -253,7 +253,11 @@ input, textarea, select, .uneditable-input {
 }
 
 #document_is_private {
-  width: 0 !important;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+
 }
 
 /* page index */

@@ -19,9 +19,9 @@ class DocumentsController < ApplicationController
     if @document.is_private != true || signed_in?  
       @pdf_url = build_pdf_url @document
     else
-        signed_in_user
-      end
+      signed_in_user
     end
+  end
 
     # GET /documents/new
     def new
