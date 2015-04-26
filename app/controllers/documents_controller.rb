@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController 
- #include SessionsHelper
+  #include SessionsHelper
   before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_filter :signed_in_user, only: [:new, :edit, :create, :update, :destroy]
 
@@ -19,31 +19,31 @@ class DocumentsController < ApplicationController
     if @document.is_private != true || signed_in?  
       @pdf_url = build_pdf_url @document
     else
-        signed_in_user
-      end
+      signed_in_user
     end
+  end
 
-    # GET /documents/new
-    def new
-      @document = Document.new
-    end
+  # GET /documents/new
+  def new
+    @document = Document.new
+  end
 
-    # GET /documents/1/edit
-    def edit
-    end
+  # GET /documents/1/edit
+  def edit
+  end
 
-    # POST /documents
-    # POST /documents.json
-    def create
-      @document = Document.new(document_params)
+  # POST /documents
+  # POST /documents.json
+  def create
+    @document = Document.new(document_params)
 
-      respond_to do |format|
-        if @document.save
-          format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
-          format.json { render :show, status: :created, location: @document }
-        else
-          format.html { render :new }
-          format.json { render json: @document.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @document.save
+        format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
+        format.json { render :show, status: :created, location: @document }
+      else
+        format.html { render :new }
+        format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -101,18 +101,18 @@ class DocumentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_document
+    @document = Document.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def document_params
-      params.require(:document).permit(
-        :title, :author, :description, :keywords, :published_year, :publisher, :file, :is_private)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def document_params
+    params.require(:document).permit(
+      :title, :author, :description, :keywords, :published_year, :publisher, :file, :is_private)
+  end
 
-    def build_pdf_url(doc)
-      URI.join(request.url,@document.file.url)
-    end
+  def build_pdf_url(doc)
+    URI.join(request.url,@document.file.url)
+  end
 end
