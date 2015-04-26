@@ -62,6 +62,7 @@ pt-BR:
   save_changes: "Salvar alterações"
   update_profile: "Atualizar perfil"
   create_user: "Criar usuário"
+  notice_to_login: "Por favor, efetue login para acessar" 
   home:
     search: "Busca"
     btn-search: "Pesquisar"
@@ -84,12 +85,15 @@ pt-BR:
     keywords: "Palavras chave"
     published_year: "Ano de publicação"
     publisher: "Editor"
+    is_private: "Documento privado"
     file: "Arquivo"
     save: "Salvar documento"
     search: 
       title: "Resultados"
       result: "resultado"
       found: "encontrado"
+      previous: "Anterior"
+      next: "Próximo"
     messages: 
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."
@@ -100,7 +104,10 @@ pt-BR:
       description: "Descrição: "
       keywords: "Palavras-chave: "
       published_in: "Ano de Publicação: "
-      publisher: "Editora: "     
+      publisher: "Editora: "
+      is_private: "Documento Privado: "
+      affirmation: "Sim"
+      negation: "Não"
   users: 
     index:
       title: "Todos os usuários"

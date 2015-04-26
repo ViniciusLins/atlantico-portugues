@@ -30,7 +30,7 @@ describe Document do
   it { should respond_to(:published_year) }
   it { should respond_to(:publisher) }
   it { should respond_to(:file) }
-
+  it { should respond_to(:is_private)}
   # Test validations
   describe "when title is not present" do
     before { @document.title = "  " }
@@ -51,10 +51,15 @@ describe Document do
     before { @document.file_file_size = 51.megabytes }
     it { should_not be_valid }
   end
-
-  describe "when file type not is pdf" do
+ describe "when file type not is pdf" do
     before { @document.file_content_type = 'image/png' }
     it { should_not be_valid }
   end
-
+# it is dispensable
+=begin 
+  describe "when flag to is private is not set  " do
+    before {@document.is_private = false}
+    it { should_not be_valid }
+  end
+=end
 end

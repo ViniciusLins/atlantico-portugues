@@ -24,6 +24,11 @@
       <%= f.label :file, t('documents.file') %><br>
       <%= f.file_field :file %>
 
+      <%= f.label :is_private  do %>
+        <%= f.check_box :is_private, {}, "true", "false"  %>
+        <%= t('documents.is_private') %>
+      <% end %>
+
       <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
     <% end %>
   </div>

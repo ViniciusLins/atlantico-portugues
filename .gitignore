@@ -25,3 +25,4 @@ solr/test
 solr/pids
 sunspot-solr.pid
 solr/development
+solr/pids/development/*.pid

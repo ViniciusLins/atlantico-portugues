@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322064726) do
+ActiveRecord::Schema.define(version: 20150422005136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150322064726) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.boolean  "is_private"
   end
 
   create_table "pages", force: true do |t|
@@ -55,11 +56,11 @@ ActiveRecord::Schema.define(version: 20150322064726) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

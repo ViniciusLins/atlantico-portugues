@@ -192,8 +192,61 @@ describe "Authentication" do
            response.should redirect_to(signin_path) 
           end
         end
+     
+      describe "in the documents controller" do
+        #let(:mypage) { FactoryGirl.create(:document, is_private: true) }
+        # WHen you uses let function from rspec, the statement inside { } only is 
+        # called, if you use mypage in some place. 
+
+        describe "when searching documents" do
+          self.use_transactional_fixtures = false
+          before do
+            FactoryGirl.create(:document, is_private: true)
+            visit root_path 
+            click_button I18n.t('home.btn-search')
+          end
+         
+          #before { visit root_path }
+          #before { click_button search }
+          it "should not show private documents" do
+            puts "#{Document.count} documents founded"
+            # You need put the regex here. /^0 
+            # Probably this will work, but I dont have sure.. ok 
+            should have_selector('h2', text: /^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+       ##      should have_content(/^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+          end
+        end
+        describe "when seeing index of documents" do
+          self.use_transactional_fixtures = false
+          before do
+            FactoryGirl.create(:document, is_private: true)
+            visit documents_path 
+          end
+         
+          #before { visit root_path }
+          #before { click_button search }
+          it "should not exhibit in the list the private documents" do
+            should have_selector('tr', count: 1)
+          end
+        end
+       
+        describe "when trying to access a private document without log in" do
+          self.use_transactional_fixtures = false
+          before do
+            FactoryGirl.create(:document, is_private: true, id:1)
+            visit '/documents/1' 
+          end
+         
+          #before { visit root_path }
+          #before { click_button search }
+          it "should not exhibit nothing about private documents" do
+            should have_selector('h1', text: I18n.t('signin_title'))
+          end
+        end
+ 
       end
     end
+  end
 
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
@@ -235,7 +288,7 @@ describe "Authentication" do
         describe "when visiting edit page" do
           before { visit edit_page_path(mypage) }
           it "should redirect to home" do
-            should_not have_title('Editar Página')
+            should_not have_title(I18n.t('pages.edit.title'))
           end
         end
 

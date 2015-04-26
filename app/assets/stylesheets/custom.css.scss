@@ -252,6 +252,24 @@ input, textarea, select, .uneditable-input {
   height: 200px !important;
 }
 
+#document_is_private {
+  position: relative !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 10px !important;
+
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
 /* page index */
 
 #btn-new-page {

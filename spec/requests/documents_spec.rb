@@ -65,6 +65,7 @@ describe "Documents" do
         fill_in I18n.t('documents.author'),           with: "Sample Author"
         fill_in I18n.t('documents.keywords'),         with: "Sample, Document"
         attach_file I18n.t('documents.file'), "spec/assets/test.pdf"
+        check I18n.t('documents.is_private')
       end
       it "should create a document" do
         expect { click_button I18n.t('documents.save') }.to change(Document, :count).by(1)
@@ -80,12 +81,35 @@ describe "Documents" do
       end
     end
 
+
+    describe "when signed as admin" do
+      let(:admin) { FactoryGirl.create(:user, admin: true) }
+
+      before do
+        sign_in admin
+        visit new_document_path
+      end 
+      describe "when searching documents" do
+        before do
+          FactoryGirl.create(:document, is_private: true)
+          visit root_path 
+          click_button I18n.t('home.btn-search')
+        end
+
+        it "should show private documents" do
+          should have_selector('h2', 
+                               text: /^2 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+        end
+      end
+    end
+
     describe "when try upload a invalid file" do
       before do
         fill_in I18n.t('documents.title_model'),      with: "Sample Document"
         fill_in I18n.t('documents.author'),           with: "Sample Author"
         fill_in I18n.t('documents.keywords'),         with: "Sample, Document"
         attach_file I18n.t('documents.file'), "spec/assets/invalid.exe"
+        check I18n.t('documents.is_private')
       end
 
       it "should show a error message" do
