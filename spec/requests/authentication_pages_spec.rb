@@ -203,7 +203,7 @@ describe "Authentication" do
           before do
             FactoryGirl.create(:document, is_private: true)
             visit root_path 
-            click_button 'Pesquisar'
+            click_button I18n.t('home.btn-search')
           end
          
           #before { visit root_path }
@@ -211,7 +211,8 @@ describe "Authentication" do
           it "should not show private documents" do
             # You need put the regex here. /^0 
             # Probably this will work, but I dont have sure.. ok 
-            should have_selector('h2', text: /^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+       #     should have_selector('h2', text: /^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+             should have_content(/^0 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
           end
         end
         describe "when seeing index of documents" do
@@ -238,7 +239,7 @@ describe "Authentication" do
           #before { visit root_path }
           #before { click_button search }
           it "should not exhibit nothing about private documents" do
-            should_not have_selector('h1')
+            should have_selector('h1', text: I18n.t('signin_title'))
           end
         end
  

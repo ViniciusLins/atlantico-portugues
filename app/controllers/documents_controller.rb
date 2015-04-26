@@ -1,41 +1,49 @@
 class DocumentsController < ApplicationController 
-  include SessionsHelper
+ #include SessionsHelper
   before_action :set_document, only: [:show, :edit, :update, :destroy]
   before_filter :signed_in_user, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.page(params[:page])
+    if signed_in?
+      @documents = Document.page(params[:page])
+    else
+      @documents = Document.page(params[:page]).where(:is_private => false)
+    end
   end
 
   # GET /documents/1
   # GET /documents/1.json
   def show
-    @pdf_url = build_pdf_url @document
-  end
+    if @document.is_private != true || signed_in?  
+      @pdf_url = build_pdf_url @document
+    else
+        signed_in_user
+      end
+    end
 
-  # GET /documents/new
-  def new
-    @document = Document.new
-  end
+    # GET /documents/new
+    def new
+      @document = Document.new
+    end
 
-  # GET /documents/1/edit
-  def edit
-  end
+    # GET /documents/1/edit
+    def edit
+    end
 
-  # POST /documents
-  # POST /documents.json
-  def create
-    @document = Document.new(document_params)
+    # POST /documents
+    # POST /documents.json
+    def create
+      @document = Document.new(document_params)
 
-    respond_to do |format|
-      if @document.save
-        format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
-        format.json { render :show, status: :created, location: @document }
-      else
-        format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @document.save
+          format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
+          format.json { render :show, status: :created, location: @document }
+        else
+          format.html { render :new }
+          format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,7 +75,6 @@ class DocumentsController < ApplicationController
   def search
     if signed_in? 
       @search = Document.search do
-      #with :is_private, signed_in? ? true : nil
         fulltext params[:search] do
           query_phrase_slop 5
           phrase_fields title:  2.0
@@ -79,7 +86,7 @@ class DocumentsController < ApplicationController
       end
     else
       @search = Document.search do
-        with :is_private, nil
+        with :is_private, false
         fulltext params[:search] do
           query_phrase_slop 5
           phrase_fields title:  2.0

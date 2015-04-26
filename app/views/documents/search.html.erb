@@ -1,7 +1,7 @@
 <%= provide(:title, t('.title')) %>
 <h1><%= t('.title')%></h1>
 <h2>
-<%= build_results_text @search.total  %>
+<%= build_results_text @search.total %>
 </h2>
 <%= will_paginate @documents, renderer: BootstrapPagination::Rails %>
 
@@ -17,11 +17,7 @@
   </thead>
 
   <tbody>
-<% @documents.each do |d| %>
-  <% if d.is_private != true || signed_in?  %>
-    <%= render d %>
-  <% end %>
-<% end %> 
+    <%= render @documents %>
   </tbody>
 </table>
 

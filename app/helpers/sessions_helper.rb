@@ -35,7 +35,7 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      flash[:warning] = "Please sign in."
+      flash[:warning] = I18n.t('notice_to_login')
       redirect_to signin_path
     end
   end

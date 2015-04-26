@@ -47,6 +47,7 @@ def create_documents
     published_year = Faker::Date.between(1000.years.ago, Date.today).year
     publisher     = Faker::Company.name
     file          = File.open(Dir['spec/assets/*.pdf'].sample)
+    is_private    = false
     # puts "Inserting"
     # puts "title #{title}"
     # puts "author #{author}"
@@ -62,7 +63,8 @@ def create_documents
       keywords: keywords,
       published_year: published_year,
       publisher: publisher,
-      file: file 
+      file: file,
+      is_private: is_private 
     )
   end
 end

@@ -62,6 +62,7 @@ pt-BR:
   save_changes: "Salvar alterações"
   update_profile: "Atualizar perfil"
   create_user: "Criar usuário"
+  notice_to_login: "Por favor, efetue login para acessar" 
   home:
     search: "Busca"
     btn-search: "Pesquisar"
