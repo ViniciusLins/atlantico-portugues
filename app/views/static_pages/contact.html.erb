@@ -1,5 +1,2 @@
 <% provide(:title, t('contact')) %>
-<h1><%= t('contact')  %></h1>
-<p>
-
-</p>
+<%= @page.body.html_safe unless @page.nil? %>

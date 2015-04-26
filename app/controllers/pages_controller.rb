@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:show, :edit, :update]
   before_filter :signed_in_user
   before_filter :admin_user
 
@@ -14,32 +14,7 @@ class PagesController < ApplicationController
   def show
   end
 
-  # GET /pages/new
-  def new
-    @page = Page.new
-  end
-
-  # GET /pages/1/edit
-  def edit
-  end
-
-  # POST /pages
-  # POST /pages.json
-  def create
-    @page = Page.new(page_params)
-
-    respond_to do |format|
-      if @page.save
-        format.html do 
-          flash[:success] = I18n.t('pages_created') 
-          redirect_to @page
-        end
-        format.json { render :show, status: :created, location: @page }
-      else
-        format.html { render :new }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
-    end
+  def edit 
   end
 
   # PATCH/PUT /pages/1
@@ -56,19 +31,6 @@ class PagesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /pages/1
-  # DELETE /pages/1.json
-  def destroy
-    @page.destroy
-    respond_to do |format|
-      format.html do
-        flash[:success] = I18n.t('pages_deleted')
-        redirect_to pages_url
-      end 
-      format.json { head :no_content }
     end
   end
 

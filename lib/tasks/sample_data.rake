@@ -36,6 +36,9 @@ def create_pages
   Page.create!(title: "Sobre Nós",
               body: "<h1>Sobre Nós</h1>
                     <h2>sobre...</h2>")
+  Page.create!(title: "Entre em contato",
+              body: "<h1>Entre em contato</h1>
+                    <h2>...</h2>")
 end
 
 def create_documents
