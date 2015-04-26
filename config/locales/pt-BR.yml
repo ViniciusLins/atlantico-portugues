@@ -92,6 +92,8 @@ pt-BR:
       title: "Resultados"
       result: "resultado"
       found: "encontrado"
+      previous: "Anterior"
+      next: "Próximo"
     messages: 
       create_success: "Documento salvo com sucesso."
       update_success: "Documento atualizado com sucesso."
