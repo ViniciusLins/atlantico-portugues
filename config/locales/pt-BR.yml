@@ -34,6 +34,10 @@ pt-BR:
         author: "Autor" 
         keywords: "Palavras-chave"
         file: "Arquivo" 
+  will_paginate:
+    previous_label: "&#8592; página anterior"
+    next_label: "próxima página &#8594;"
+    page_gap: "&hellip;"
   dialogs:
     are_you_sure: "Você tem certeza?"
   hello: "Hello world"
