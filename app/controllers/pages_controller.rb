@@ -14,24 +14,7 @@ class PagesController < ApplicationController
   def show
   end
 
-
-  # POST /pages
-  # POST /pages.json
-  def create
-    @page = Page.new(page_params)
-
-    respond_to do |format|
-      if @page.save
-        format.html do 
-          flash[:success] = I18n.t('pages_created') 
-          redirect_to @page
-        end
-        format.json { render :show, status: :created, location: @page }
-      else
-        format.html { render :new }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
-    end
+  def edit 
   end
 
   # PATCH/PUT /pages/1
