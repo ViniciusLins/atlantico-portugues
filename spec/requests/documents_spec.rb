@@ -81,6 +81,28 @@ describe "Documents" do
       end
     end
 
+
+    describe "when signed as admin" do
+      let(:admin) { FactoryGirl.create(:user, admin: true) }
+
+      before do
+        sign_in admin
+        visit new_document_path
+      end 
+      describe "when searching documents" do
+        before do
+          FactoryGirl.create(:document, is_private: true)
+          visit root_path 
+          click_button I18n.t('home.btn-search')
+        end
+
+        it "should show private documents" do
+          should have_selector('h2', 
+                               text: /^2 #{I18n.t('home.results.result')} #{I18n.t('home.results.found')}/)
+        end
+      end
+    end
+
     describe "when try upload a invalid file" do
       before do
         fill_in I18n.t('documents.title_model'),      with: "Sample Document"
