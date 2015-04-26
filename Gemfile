@@ -34,12 +34,11 @@ gem 'paperclip', '~> 4.2'
 gem 'pdfjs_rails', '0.0.1'
 
 # ------------------------------------
-# UTILITY GEMS
-# -----------------------------------
+# UTILITY GEMS # -----------------------------------
 
 # Sunspot is advanced search gem
-gem 'sunspot_rails', '2.1.1'
-gem 'sunspot_solr', '2.1.1'
+gem 'sunspot_rails', '~> 2.2'
+gem 'sunspot_solr', '~> 2.2'
 
 # Rails erd gem to generate model ER
 gem 'rails-erd', '1.3.1'
