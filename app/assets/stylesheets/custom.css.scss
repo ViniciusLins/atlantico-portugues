@@ -252,6 +252,10 @@ input, textarea, select, .uneditable-input {
   height: 200px !important;
 }
 
+#document_is_private {
+  width: 0 !important;
+}
+
 /* page index */
 
 #btn-new-page {
