@@ -14,13 +14,6 @@ class PagesController < ApplicationController
   def show
   end
 
-  # GET /pages/new
-  def new
-  end
-
-  # GET /pages/1/edit
-  def edit
-  end
 
   # POST /pages
   # POST /pages.json
@@ -56,11 +49,6 @@ class PagesController < ApplicationController
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # DELETE /pages/1
-  # DELETE /pages/1.json
-  def destroy
   end
 
   private
