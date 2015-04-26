@@ -6,13 +6,12 @@ describe "Static pages" do
 
   before(:all) do
     @home_page = FactoryGirl.create(:page, title: I18n.t('home_page')) 
-    @help_page = FactoryGirl.create(:page, title: I18n.t('help')) 
-    @about_page = FactoryGirl.create(:page, title: I18n.t('about'))
+    @help_page = FactoryGirl.create(:page, title: I18n.t('help_page')) 
+    @about_page = FactoryGirl.create(:page, title: I18n.t('about_page'))
 #    @contact_page = FactoryGirl.create(:page, title: I18n.t('contact'))
   end
 
   shared_examples_for "all static_pages" do
-    it { should have_selector('h1', text: heading) }
     it { should have_selector('title', text: full_title(page_title)) }
   end
 

@@ -1,4 +1,2 @@
 <% provide(:title, t('help')) %>
-<h1><%= t('help')  %></h1>
-<p>
-</p>
+<%= @page.body.html_safe unless @page.nil? %>
