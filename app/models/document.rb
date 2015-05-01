@@ -16,7 +16,7 @@
 class Document < ActiveRecord::Base
   belongs_to :user
   # Paperclip configurations
-  has_attached_file :file, touch: :last_contributor
+  has_attached_file :file
 
 
   validates_attachment :file, content_type: { content_type: "application/pdf" }
