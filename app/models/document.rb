@@ -14,8 +14,9 @@
 #
 
 class Document < ActiveRecord::Base
+  belongs_to :user
   # Paperclip configurations
-  has_attached_file :file
+  has_attached_file :file, touch: :last_contributor
 
 
   validates_attachment :file, content_type: { content_type: "application/pdf" }
@@ -38,6 +39,10 @@ class Document < ActiveRecord::Base
 
     integer :published_year
   end
+
+  def user_name
+    self.user.name if user
+  end 
 
   #def self.search(query)
   #  if !query.blank?

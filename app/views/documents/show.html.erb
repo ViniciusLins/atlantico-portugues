@@ -39,12 +39,12 @@
 
 <p>
   <strong><%= t('.last_contributor')  %></strong>
-  <%= @document.last_contributor %>
+  <%= @document.user_id ? @document.user.name : nil %>
 </p>
 
 <p>
   <strong><%= t('.last_modification')  %></strong>
-  <%= @document.last_modification %>
+  <%= @document.updated_at %>
 </p>
 
 <% end %>

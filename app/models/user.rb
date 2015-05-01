@@ -15,6 +15,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :documents
+
   before_save { self.email.downcase! }
   before_save :create_remember_token
 

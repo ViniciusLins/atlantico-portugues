@@ -31,8 +31,7 @@ describe Document do
   it { should respond_to(:publisher) }
   it { should respond_to(:file) }
   it { should respond_to(:is_private)}
-  it { should respond_to(:last_contributor)}
-  it { should respond_to(:last_modification)}
+  it { should respond_to(:user_id)}
   # Test validations
   describe "when title is not present" do
     before { @document.title = "  " }
