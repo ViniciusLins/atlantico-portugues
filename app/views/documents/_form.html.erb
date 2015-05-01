@@ -28,6 +28,10 @@
         <%= f.check_box :is_private, {}, "true", "false"  %>
         <%= t('documents.is_private') %>
       <% end %>
+      
+      <%= f.hidden_field :last_contributor, :value => current_user.name %>
+
+      <%= f.hidden_field :last_modification, :value => Time.now %>
 
       <%= f.submit btn_name, class: "btn btn-lg btn-primary" %>
     <% end %>
