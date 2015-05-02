@@ -272,5 +272,42 @@ describe "Authentication" do
       end
     end
   end
-    
+
+  describe "errors" do
+    let(:non_admin) { FactoryGirl.create(:user) }
+    before { sign_in non_admin }
+
+    describe "GET 'file_not_found'" do
+      it "returns http success" do
+        visit "/1"
+        page.should have_content(I18n.t('not_found'))
+      end
+    end
+
+    describe "GET 'internal_server_error''" do
+      it "returns http success" do
+        visit 'documents#index'
+        DocumentsController.any_instance.stub(:index).and_raise(ArgumentError)
+        page.should have_content(I18n.t('internal_error'))
+#        response.code.should eq("500")
+#        response.body.should have_json_path("error")
+      end
+    end
+
+
+    RSpec.describe ApplicationController, :type => :controller do
+
+      controller do
+        def index
+          render :text => "index called", :status => 422
+        end
+      end
+
+      describe "GET 'unprocessable'" do
+        it "returns http success" do
+          page.should have_content(I18n.t('unprocessable'))
+        end
+      end
+    end
+  end
 end
