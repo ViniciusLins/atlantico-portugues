@@ -15,8 +15,4 @@ class StaticPagesController < ApplicationController
       @page = Page.find_by_title(I18n.t('contact_page'))
     end
 
-    def notFound
-      @page='notFound'
-    end
-
 end
