@@ -288,8 +288,7 @@ describe "Authentication" do
       it "returns http success" do
         visit 'documents#index'
         DocumentsController.any_instance.stub(:index).and_raise(ArgumentError)
-        page.should have_content(I18n.t('internal_error'))
-#        response.code.should eq("500")
+        page.should have_content(I18n.t('internal_server_error'))
 #        response.body.should have_json_path("error")
       end
     end
@@ -305,7 +304,7 @@ describe "Authentication" do
 
       describe "GET 'unprocessable'" do
         it "returns http success" do
-          page.should have_content(I18n.t('unprocessable'))
+        response.code.should eq("200")
         end
       end
     end
