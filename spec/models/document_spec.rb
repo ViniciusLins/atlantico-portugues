@@ -32,9 +32,15 @@ describe Document do
   it { should respond_to(:file) }
   it { should respond_to(:is_private)}
   it { should respond_to(:user_id)}
+
   # Test validations
   describe "when title is not present" do
     before { @document.title = "  " }
+    it { should_not be_valid }
+  end
+
+  describe "when user_id is not present" do
+    before { @document.user_id = nil }
     it { should_not be_valid }
   end
 

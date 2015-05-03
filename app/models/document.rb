@@ -27,6 +27,7 @@ class Document < ActiveRecord::Base
   validates :title,   presence: true
   validates :author,  presence: true
   validates :keywords, presence: true
+  validates :user_id, presence: true
 
 
   searchable do
