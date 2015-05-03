@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get 'errors/file_not_found'
 
+  get 'errors/unprocessable'
+
+  get 'errors/internal_server_error'
+  
   root to: 'static_pages#home'
 
   resources :documents
@@ -19,6 +24,7 @@ Rails.application.routes.draw do
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
 
+#  get '*unmatched_route', to: 'application#raise_not_found'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
