@@ -36,6 +36,17 @@
   <strong><%= t('.is_private')  %></strong>
   <%= @document.is_private ? t('.affirmation') :  t('.negation')%>
 </p>
+
+<p>
+  <strong><%= t('.last_contributor')  %></strong>
+  <%= @document.user_id ? @document.user.name : nil %>
+</p>
+
+<p>
+  <strong><%= t('.last_modification')  %></strong>
+  <%= @document.updated_at %>
+</p>
+
 <% end %>
 
 <iframe src="/pdfjs/web/viewer.html?file=<%= @pdf_url %>" 

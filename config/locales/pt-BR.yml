@@ -33,7 +33,8 @@ pt-BR:
         title: "Título"
         author: "Autor" 
         keywords: "Palavras-chave"
-        file: "Arquivo" 
+        file: "Arquivo"
+        file_content: "Conteúdo do arquivo" 
   will_paginate:
     previous_label: "&#8592; página anterior"
     next_label: "próxima página &#8594;"
@@ -91,7 +92,7 @@ pt-BR:
     description: "Descrição"
     keywords: "Palavras chave"
     published_year: "Ano de publicação"
-    publisher: "Editor"
+    publisher: "Editora"
     is_private: "Documento privado"
     file: "Arquivo"
     save: "Salvar documento"
@@ -115,6 +116,8 @@ pt-BR:
       is_private: "Documento Privado: "
       affirmation: "Sim"
       negation: "Não"
+      last_contributor: "Usuário responsável pela última modifcação: "
+      last_modification: "Última mofificação: "
   users: 
     index:
       title: "Todos os usuários"

@@ -36,7 +36,7 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(document_params)
-
+    @document.user = current_user
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
@@ -51,6 +51,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
+    @document.user = current_user
     respond_to do |format|
       if @document.update(document_params)
         format.html { redirect_to @document, notice: I18n.t('documents.messages.update_success') }

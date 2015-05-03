@@ -14,6 +14,7 @@
 #
 
 class Document < ActiveRecord::Base
+  belongs_to :user
   # Paperclip configurations
   has_attached_file :file
 
@@ -26,6 +27,7 @@ class Document < ActiveRecord::Base
   validates :title,   presence: true
   validates :author,  presence: true
   validates :keywords, presence: true
+  validates :user_id, presence: true
 
 
   searchable do
@@ -38,6 +40,10 @@ class Document < ActiveRecord::Base
 
     integer :published_year
   end
+
+  def user_name
+    self.user.name if user
+  end 
 
   #def self.search(query)
   #  if !query.blank?

@@ -23,5 +23,6 @@ FactoryGirl.define do
     publisher "Portuguese Goverment"
     file { fixture_file_upload(Rails.root.join('spec', 'assets', 'test.pdf'), 'application/pdf') } 
     is_private false
+    user FactoryGirl.create(:user)
   end
 end
