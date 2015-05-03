@@ -8,8 +8,9 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <%= render 'layouts/header' %>
     <%= image_tag "cantino.jpg", id: "bg" %>
-    <div id="wrap">
+    <div id="main-container" class="container">
       <h1><% I18n.t('errors_title') %></h1>
 
       <div class="content">

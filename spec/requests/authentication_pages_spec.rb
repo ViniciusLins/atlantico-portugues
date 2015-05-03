@@ -284,15 +284,24 @@ describe "Authentication" do
       end
     end
 
+    RSpec.describe ApplicationController, :type => :controller do
+
+      controller do
+        def index
+          render :text => "index called", :status => 500
+        end
+      end
+
+
     describe "GET 'internal_server_error''" do
       it "returns http success" do
         visit 'documents#index'
         DocumentsController.any_instance.stub(:index).and_raise(ArgumentError)
-        page.should have_content(I18n.t('internal_server_error'))
+        response.code.should eq("200")
 #        response.body.should have_json_path("error")
       end
     end
-
+  end
 
     RSpec.describe ApplicationController, :type => :controller do
 
