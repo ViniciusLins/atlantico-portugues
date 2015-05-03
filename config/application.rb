@@ -29,11 +29,16 @@ module SampleApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = 'pt-BR'
 
+    config.exceptions_app = self.routes
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
+<<<<<<< HEAD
 
     config.action_dispatch.rescue_responses.merge! 'CanCan::AccessDenied' => :forbidden
     config.action_dispatch.rescue_responses.merge! 'MyCustomException' => :not_acceptable
 
+=======
+ 
+>>>>>>> 325fc3e7dce1deb28f5df017db7422bd42f6daad
   end
 end

@@ -152,6 +152,7 @@ pt-BR:
       create: "Criar Página" 
       back: "Voltar"
   errors_title: "ERRO"
+<<<<<<< HEAD
   bad_request: "Requisição incorreta"
   forbidden: "Proibido"
   internal_server_error: "Erro interno do servidor"
@@ -162,6 +163,11 @@ pt-BR:
   unauthorized: "Não autorizado"
   unprocessable_entity: "Entidade não processável"
 
+=======
+  not_found: "Página não encontrada"
+  internal_error: "Erro interno do servidor"
+  unprocessable: "Não foi possível processar o arquivo"
+>>>>>>> 325fc3e7dce1deb28f5df017db7422bd42f6daad
 # translation of rails strings
   date:
     abbr_day_names:
