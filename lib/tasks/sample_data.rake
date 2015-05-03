@@ -51,6 +51,7 @@ def create_documents
     publisher     = Faker::Company.name
     file          = File.open(Dir['spec/assets/*.pdf'].sample)
     is_private    = false
+    user          = User.first
     # puts "Inserting"
     # puts "title #{title}"
     # puts "author #{author}"
@@ -67,7 +68,8 @@ def create_documents
       published_year: published_year,
       publisher: publisher,
       file: file,
-      is_private: is_private 
+      is_private: is_private,
+      user: user
     )
   end
 end
