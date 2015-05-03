@@ -21,7 +21,6 @@ describe "Authentication" do
       describe "should have right links" do
         it { should have_link(I18n.t('pages_link'), href: pages_path) }
         it { should have_link(I18n.t('users_link'),        href: users_path) }
-        it { should have_link(I18n.t('profile'),      href: user_path(user)) }
         it { should have_link(I18n.t('config'),     href: edit_user_path(user)) }
         it { should have_link(I18n.t('signout_title'),     href: signout_path) }
         it { should_not have_link(I18n.t('signin_title'),  href: signin_path) }
@@ -50,7 +49,6 @@ describe "Authentication" do
       describe "should have right links" do
         it { should_not have_link(I18n.t('pages_link'), href: pages_path) }
         it { should have_link(I18n.t('users_link'),        href: users_path) }
-        it { should have_link(I18n.t('profile'),      href: user_path(user)) }
         it { should have_link(I18n.t('config'),     href: edit_user_path(user)) }
         it { should have_link(I18n.t('signout_title'),     href: signout_path) }
         it { should_not have_link(I18n.t('signin_title'),  href: signin_path) }
