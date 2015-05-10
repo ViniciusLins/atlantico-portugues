@@ -116,8 +116,10 @@ pt-BR:
       is_private: "Documento Privado: "
       affirmation: "Sim"
       negation: "Não"
-      last_contributor: "Usuário responsável pela última modifcação: "
+      last_contributor: "Usuário responsável pela última modificação: "
       last_modification: "Última mofificação: "
+    new:
+      notice_published_year: "Para documentos anteriores à Era Cristã, insira valores negativos. Eles serão exibidos ao público em valores positivos acompanhados de uma sigla a.C."
   users: 
     index:
       title: "Todos os usuários"
@@ -364,6 +366,6 @@ pt-BR:
     am: ''
     formats:
       default: ! '%a, %d de %B de %Y, %H:%M:%S %z'
-      long: ! '%d de %B de %Y, %H:%M'
+      long: ! '%d de %B de %Y, %H:%M, Horário de Brasília'
       short: ! '%d de %B, %H:%M'
     pm: ''

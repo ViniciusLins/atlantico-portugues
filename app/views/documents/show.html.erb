@@ -1,6 +1,10 @@
 <%= provide(:title, @document.title) %>
 <h1><%= @document.title %></h1>
 
+<% if signed_in? %>
+  <%= link_to t('documents.edit'), edit_document_path(@document), class: "btn btn-default btn-lg" %> 
+<% end %>
+
 <p>
   <strong><%= t('.title_model')  %></strong>
   <%= @document.title %>
@@ -23,7 +27,10 @@
 
 <p>
   <strong><%= t('.published_in')  %></strong>
-  <%= @document.published_year %>
+  <% year = @document.published_year %>
+  <% year_absolute_value = (year<0) ? year*(-1) : year %>
+  <%= year_absolute_value  %>
+  <%= (year<1) ? 'a.C.' : nil %>
 </p>
 
 <p>
@@ -44,7 +51,7 @@
 
 <p>
   <strong><%= t('.last_modification')  %></strong>
-  <%= @document.updated_at %>
+  <%=l(@document.updated_at, :format => :long) %>
 </p>
 
 <% end %>
@@ -52,6 +59,4 @@
 <iframe src="/pdfjs/web/viewer.html?file=<%= @pdf_url %>" 
 style="border: 0" width="100%" height="800" frameborder="0" scrolling="no"></iframe>
 
-<% if signed_in? %>
-  <%= link_to t('documents.edit'), edit_document_path(@document), class: "btn btn-default btn-lg" %> 
-<% end %>
+
