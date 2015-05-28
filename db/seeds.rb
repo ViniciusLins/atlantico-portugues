@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+  User.create!(name: "Administrador", 
+               email: "admin@atlanticoportugues.com",
+               password: "03fUqCnYENFkY", 
+               password_confirmation: "03fUqCnYENFkY",
+               admin: true)
+
+  Page.create!(title: "Home",
+              body: "<h1>Bem vindo ao Atlântico Português </h1>
+                    <h2>Esta é a página inicial do Atlântico Português</h2>")
+  Page.create!(title: "Ajuda",
+              body: "<h1>Ajuda</h1>
+                    <h2>Ajuda</h2>")
+  Page.create!(title: "Sobre Nós",
+              body: "<h1>Sobre Nós</h1>
+                    <h2>sobre...</h2>")
+  Page.create!(title: "Entre em contato",
+              body: "<h1>Entre em contato</h1>
+                    <h2>...</h2>")
