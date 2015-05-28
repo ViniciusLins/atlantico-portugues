@@ -108,7 +108,7 @@ gem 'sdoc', '0.4.1', group: :doc
 group :test do
     gem 'capybara', '1.1.2'
     gem 'rb-inotify', '~> 0.9'
-    gem 'factory_girl_rails', '1.4.0'
+    gem 'factory_girl_rails', '~> 4.5.0'
     gem 'database_cleaner', '1.4.1'
     # Commented this gem for guard use just tmux notification
     # gem 'libnotify', '0.5.9'
