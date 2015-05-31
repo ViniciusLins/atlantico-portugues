@@ -12,3 +12,10 @@
 <%= f.label :password_confirmation, t('password_confirmation') %>
 
 <%= f.password_field :password_confirmation, class: "form-control" %>
+
+<% if params[:action] == 'new' %>
+  <%= f.label :admin  do %>
+    <%= f.check_box :admin, {}, "true", "false"  %>
+    <%= t('admin') %>
+  <% end %>
+<% end %>

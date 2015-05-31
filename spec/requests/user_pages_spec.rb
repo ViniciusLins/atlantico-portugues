@@ -100,6 +100,18 @@ describe "User pages" do
 
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
+        User.last.should_not be_admin
+      end
+
+      describe "and mark admin option" do
+        before do 
+          check I18n.t('.admin')
+        end
+
+        it "should create a admin user" do
+          expect { click_button submit }.to change(User, :count).by(1)
+          User.last.should be_admin
+        end
       end
 
       describe "after saving the user" do
@@ -132,6 +144,7 @@ describe "User pages" do
       it { should have_selector('h1',     text: I18n.t(:update_profile)) }
       it { should have_title(I18n.t(:update_profile)) }
       it { should_not have_link('change', href: 'http://gravatar.com/emails') }
+      it { should_not have_content(I18n.t('.admin')) }
     end
 
     describe "with invalid information" do

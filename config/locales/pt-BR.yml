@@ -27,6 +27,7 @@ pt-BR:
         email: "Email"
         password: "Senha"
         password_confirmation: "Confirmar senha"
+        admin: "Administrador"
       page:
         title: "Título"
       document:
@@ -67,6 +68,7 @@ pt-BR:
   email: "Email"
   password: "Senha"
   password_confirmation: "Confirmar senha"
+  admin: "Administrador"
   save_changes: "Salvar alterações"
   update_profile: "Atualizar perfil"
   create_user: "Criar usuário"
