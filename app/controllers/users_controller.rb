@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(params.require(:user).permit(:name, :email, :password, 
+                                                  :password_confirmation, :admin))
     if @user.save
       flash[:success] = I18n.t('users_created') 
       redirect_to root_path 
