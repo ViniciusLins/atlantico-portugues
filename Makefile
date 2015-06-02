@@ -8,6 +8,7 @@ gems:
 
 rails:
 	docker build -f docker/rails/Dockerfile -t niltonvasques/rails .
+
 data:
 	docker create -v /usr/src/app/public/system -v /usr/src/app/public/uploads --name container-data niltonvasques/rails /bin/true
 
