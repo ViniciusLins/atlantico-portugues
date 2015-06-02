@@ -76,7 +76,7 @@ describe "Static pages" do
     should have_selector 'title', text: full_title(I18n.t('help'))
     click_link I18n.t('contact')
     should have_selector 'title', text: full_title(I18n.t('contact'))
-    click_link I18n.t('home_page')
+    click_link I18n.t('about')
     click_link "atlântico português"
     should have_selector 'title', text: full_title('')
     click_link I18n.t('documents.title')

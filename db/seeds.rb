@@ -18,8 +18,8 @@
   Page.create!(title: "Informações úteis",
               body: "<h1>Informações úteis</h1>
                     <h2>Informações úteis</h2>")
-  Page.create!(title: "Sobre Nós",
-              body: "<h1>Sobre Nós</h1>
+  Page.create!(title: "Sobre nós",
+              body: "<h1>Sobre nós</h1>
                     <h2>sobre...</h2>")
   Page.create!(title: "Entre em contato",
               body: "<h1>Entre em contato</h1>
