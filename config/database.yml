@@ -28,7 +28,7 @@ test:
 
 production:
   <<: *default
-  host: localhost
+  host: 172.17.0.12 
   database: atlantico-portugues-db 
   username: atlantico-portugues 
   password: atlantico 
