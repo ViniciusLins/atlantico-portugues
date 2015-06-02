@@ -1,4 +1,5 @@
 FROM ruby:2.1.5
+MAINTAINER nilton.vasques@gmail.com 
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
