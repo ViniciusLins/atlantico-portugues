@@ -15,3 +15,9 @@ data:
 run-dev:
 	docker run --name atlantico-portugues-server -p 8080:3000 -d --volumes-from container-data atlantico-portugues
 	echo "RUNNING IN http://localhost:8080"
+
+run-server:
+	docker run --rm -p 80:80 atlantico-server
+
+server:
+	docker build -f docker/server/Dockerfile -t atlantico-server .
