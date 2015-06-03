@@ -22,3 +22,8 @@ run-server:
 server:
 	docker build -f docker/server/Dockerfile -t atlantico-server .
 	docker create -v /home/app/atlantico-portugues/public/system -v /home/app/atlantico-portugues/public/uploads --name atlantico-data atlantico-server /bin/true
+
+
+run-digitalocean:
+	docker run --name container-postgres -e POSTGRES_PASSWORD=atlantico -d postgres
+	docker run --name=atlantico-container --link container-postgres:postgres --volumes-from atlantico-data -w /home/app/atlantico-portugues -d -p 80:80  atlantico-server
