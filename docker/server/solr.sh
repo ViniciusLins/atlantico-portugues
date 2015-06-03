@@ -1,3 +1,3 @@
 ### In logtime.sh (make sure this file is chmod +x):
 #!/bin/sh
-bundle exec rake sunspot:solr:start RAILS_ENV=production
+cd /home/app/atlantico-portugues && bundle exec rake sunspot:solr:start RAILS_ENV=production
