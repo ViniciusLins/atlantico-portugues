@@ -1,8 +1,9 @@
 class DocumentsController < ApplicationController 
   #include SessionsHelper
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_filter :signed_in_user, only: [:new, :edit, :create, :update, :destroy]
-
+  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
+#  before_filter :admin_user, only: [:destroy, :create, :new]
+  
   # GET /documents
   # GET /documents.json
   def index
