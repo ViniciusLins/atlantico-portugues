@@ -34,7 +34,7 @@ describe "Authentication" do
       it { should have_error_message(I18n.t('autentication_failed')) }
 
       describe "after visiting another page" do
-        before { click_link I18n.t('home_page') }
+        before { click_link I18n.t('about') }
 
         it { should_not have_error_message(I18n.t('autentication_failed')) }
       end
