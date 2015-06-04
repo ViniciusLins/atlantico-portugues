@@ -93,7 +93,7 @@ describe "Documents" do
         before do
           FactoryGirl.create(:document, is_private: true)
           visit root_path 
-          click_button I18n.t('home.btn-search')
+          click_button "search" 
         end
 
         it "should show private documents" do

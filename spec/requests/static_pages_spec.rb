@@ -27,7 +27,7 @@ describe "Static pages" do
       describe "typing exactly title" do
         before do
           fill_in "search", with: "Sample Document" 
-          click_button I18n.t('home.btn-search')
+          click_button "search"
         end
 
         it { should have_title(I18n.t('home.results.title')) }
@@ -36,7 +36,7 @@ describe "Static pages" do
       describe "search empty string" do
         before do
           fill_in "search", with: " " 
-          click_button I18n.t('home.btn-search')
+          click_button "search"
         end
 
         it { should have_title(I18n.t('home.results.title')) }

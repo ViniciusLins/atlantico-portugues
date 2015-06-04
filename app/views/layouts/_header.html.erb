@@ -1,17 +1,26 @@
 <header class="navbar navbar-default navbar-fixed-top">
-<div class="container">
-  <%= link_to "atlântico português", root_path, id: "logo" %>
-  <%= form_tag search_path, 
-    { method: "get", class: "navbar-form navbar-left", id: "search-container"}  do  %>
-    <div  class="form-group">
-      <%= text_field_tag :search, params[:search], class: "form-control" %>
+  <div id="topbar-container" class="container">
+    <%= link_to "atlântico português", root_path, id: "logo" %>
+    <div class="">
     </div>
-      <%= submit_tag t('home.btn-search'), name: t('home.btn-search'), class: "btn-search btn btn-default" %>
-    <% end %>
-  <nav>
-    <ul class="nav navbar-nav navbar-right">
-      <%= render 'shared/navbar' %>
-    </ul>
-  </nav>
-</div>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <%= form_tag search_path, 
+          { method: "get", class: "navbar-form", id: "search-form"}  do  %>
+          <div  class="input-group">
+            <%= text_field_tag :search, params[:search], class: "form-control" %>
+            <div class="input-group-btn">
+              <button id="search" name="<%= t('home.btn-search') %>" type="submit"  
+                class="btn btn-success">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
+          </div>
+        <% end %>
+        </li>
+        <%= render 'shared/navbar' %>
+      </ul>
+    </nav>
+  </div>
 </header>
