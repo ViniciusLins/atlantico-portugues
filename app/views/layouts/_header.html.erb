@@ -1,9 +1,18 @@
 <header class="navbar navbar-default navbar-fixed-top">
   <div id="topbar-container" class="container">
-    <%= link_to "atlântico português", root_path, id: "logo" %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "atlântico português", root_path, id: "logo", class: "navbar-brand" %>
+    </div>
     <div class="">
     </div>
     <nav>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
         <%= form_tag search_path, 
@@ -21,6 +30,7 @@
         </li>
         <%= render 'shared/navbar' %>
       </ul>
+      </div>
     </nav>
   </div>
 </header>
