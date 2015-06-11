@@ -25,8 +25,8 @@ pt-BR:
       user:
         name: "Nome"
         email: "Email"
-        password: "Nova senha"
-        password_confirmation: "Confirmar nova senha"
+        password: "Senha"
+        password_confirmation: "Confirmar senha"
         admin: "Administrador"
       page:
         title: "Título"
@@ -66,8 +66,8 @@ pt-BR:
   about: "Sobre nós"
   name: "Nome"
   email: "Email"
-  password: "Nova senha"
-  password_confirmation: "Confirmar nova senha"
+  password: "Senha"
+  password_confirmation: "Confirmar senha"
   admin: "Administrador"
   save_changes: "Salvar alterações"
   update_profile: "Atualizar perfil"
