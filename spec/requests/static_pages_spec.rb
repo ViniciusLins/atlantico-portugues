@@ -19,15 +19,15 @@ describe "Static pages" do
     before { visit root_path }
     it "should have fapesb logo with right link" do
       should have_link("", href: "http://www.fapesb.ba.gov.br/") 
-      should have_selector('a', href: "http://www.fapesb.ba.gov.br/") 
+      should have_selector('a', href: "^http://www.fapesb.ba.gov.br/") 
     end
     it "should have cnpq logo with right link" do
       should have_link("", href: "http://www.cnpq.br/") 
-      should have_selector('a', href: "http://www.cnpq.br/") 
+      should have_selector('a', href: "^http://www.cnpq.br/") 
     end
     it "should have ufba logo with right link" do
       should have_link("", href: "https://www.ufba.br/") 
-      should have_selector('a', href: "https://www.ufba.br/") 
+      should have_selector('a', href: "^hhttps://www.ufba.br/") 
     end
   end
 
