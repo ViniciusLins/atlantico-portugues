@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController 
   #include SessionsHelper
   before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_filter :signed_in_user,    only: [:new, :edit, :create, :update, :destroy]
   before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
   
   # GET /documents
@@ -25,15 +26,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    if signed_in?
-      if current_user.admin?
-        @document = Document.new
-      else
- admin_user
-      end
-    else
-    signed_in_user
-end
+    @document = Document.new
   end
 
   # GET /documents/1/edit
@@ -57,7 +50,7 @@ end
           end
         end
       else
-        redirect_to signin_path
+    admin_user
       end
     else
       redirect_to signin_path
@@ -80,7 +73,7 @@ end
           end
         end
       else
-        redirect_to signin_path
+        admin_user
       end
     else
       redirect_to signin_path
@@ -90,10 +83,18 @@ end
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    @document.destroy
-    respond_to do |format|
-      format.html { redirect_to documents_url, notice: I18n.t('documents.messages.destroy_success') }
-      format.json { head :no_content }
+    if signed_in?
+      if current_user.admin? 
+        @document.destroy
+        respond_to do |format|
+          format.html { redirect_to documents_url, notice: I18n.t('documents.messages.destroy_success') }
+          format.json { head :no_content }
+        end
+      else
+        admin_user
+      end
+    else
+      redirect_to signin_path
     end
   end
 
