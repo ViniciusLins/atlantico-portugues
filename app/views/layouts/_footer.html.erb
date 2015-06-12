@@ -1,11 +1,19 @@
 <footer class="footer">
-    <small>
-        <a href="https://www.ufba.br/">Atlântico Português</a>
-        by Nilton Vasques & Vinicius Lins 
-    </small>
-    <nav>
-        <ul>
-            <li><%= link_to t('contact'),  contact_path %></li>
-        </ul>
-    </nav>
+  <small>
+    Apoio:
+  </small>
+  <br>
+    <%= link_to image_tag("fapesb.png", size: "80x40"), "http://www.fapesb.ba.gov.br/", :target => "_blank"%>
+    <%= link_to image_tag("cnpq.jpg", size: "80x40"), "http://www.cnpq.br/", :target => "_blank"%>
+    <%= link_to image_tag("ufba.png", size: "40x40"), "https://www.ufba.br/", :target => "_blank"%>
+  <br>
+  <br>
+  <small>
+    Developed by Nilton Vasques & Vinicius Lins
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to t('contact'), contact_path %></li>
+    </ul>
+  </nav>
 </footer>
