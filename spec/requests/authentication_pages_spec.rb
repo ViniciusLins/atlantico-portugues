@@ -322,4 +322,15 @@ describe "Authentication" do
       end
     end
   end
+
+    describe "as admin user" do
+      let(:admin_undestructible) { FactoryGirl.create(:user, name: "Administrador", admin: true) }
+      before { sign_in admin_undestructible } 
+ 
+      describe "submitting a delete request to the users#destroy action" do
+        before { visit user_path }
+        before { delete user_path(admin_undestructible) }
+        it { should have_content(I18n.t('users_impossible_deleted')) }
+      end
+    end
 end

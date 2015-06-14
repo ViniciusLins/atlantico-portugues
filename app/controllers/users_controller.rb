@@ -40,9 +40,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = I18n.t('users_deleted')
-    redirect_to users_path
+    @user =  User.find(params[:id]) 
+    if @user.name != 'Administrador'
+      @user.destroy
+      flash[:success] = I18n.t('users_deleted')
+      redirect_to users_path
+    else
+      redirect_to users_path
+      flash[:error] = I18n.t('users_impossible_deleted')
+    end 
   end
 
   def user_params
