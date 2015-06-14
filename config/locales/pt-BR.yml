@@ -57,6 +57,7 @@ pt-BR:
   users_created: "Usuário criado com sucesso!"
   users_updated: "Perfil autalizado"
   users_deleted: "Usuário apagado"
+  users_impossible_deleted: "Esse usuário não pode ser apagado"
   users_link: "Usuários"
   signin_title: "Entrar"
   signout_title: "Sair"
