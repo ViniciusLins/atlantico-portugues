@@ -1,8 +1,9 @@
 class DocumentsController < ApplicationController 
   #include SessionsHelper
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_filter :signed_in_user, only: [:new, :edit, :create, :update, :destroy]
-
+  before_filter :signed_in_user,    only: [:new, :edit, :create, :update, :destroy]
+  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
+  
   # GET /documents
   # GET /documents.json
   def index
@@ -35,41 +36,65 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
-    @document.user = current_user
-    respond_to do |format|
-      if @document.save
-        format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
-        format.json { render :show, status: :created, location: @document }
+    if signed_in?
+      if current_user.admin?
+        @document = Document.new(document_params)
+        @document.user = current_user
+        respond_to do |format|
+          if @document.save
+            format.html { redirect_to @document, notice: I18n.t('documents.messages.create_success') }
+            format.json { render :show, status: :created, location: @document }
+          else
+            format.html { render :new }
+            format.json { render json: @document.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
+    admin_user
       end
+    else
+      redirect_to signin_path
     end
   end
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
-    @document.user = current_user
-    respond_to do |format|
-      if @document.update(document_params)
-        format.html { redirect_to @document, notice: I18n.t('documents.messages.update_success') }
-        format.json { render :show, status: :ok, location: @document }
+    if signed_in?
+      if current_user.admin?
+        @document.user = current_user
+        respond_to do |format|
+          if @document.update(document_params)
+            format.html { redirect_to @document, notice: I18n.t('documents.messages.update_success') }
+            format.json { render :show, status: :ok, location: @document }
+          else
+            format.html { render :edit }
+            format.json { render json: @document.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
+        admin_user
       end
+    else
+      redirect_to signin_path
     end
   end
 
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    @document.destroy
-    respond_to do |format|
-      format.html { redirect_to documents_url, notice: I18n.t('documents.messages.destroy_success') }
-      format.json { head :no_content }
+    if signed_in?
+      if current_user.admin? 
+        @document.destroy
+        respond_to do |format|
+          format.html { redirect_to documents_url, notice: I18n.t('documents.messages.destroy_success') }
+          format.json { head :no_content }
+        end
+      else
+        admin_user
+      end
+    else
+      redirect_to signin_path
     end
   end
 

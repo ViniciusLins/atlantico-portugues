@@ -31,8 +31,9 @@
   <%= @document.publisher %>
 </p>
 
-<% if signed_in? %>
-<p>
+<% if signed_in? %> 
+  <% if current_user.admin? %>
+  <p>
   <strong><%= t('.is_private')  %></strong>
   <%= @document.is_private ? t('.affirmation') :  t('.negation')%>
 </p>
@@ -46,11 +47,13 @@
   <strong><%= t('.last_modification')  %></strong>
   <%= @document.updated_at %>
 </p>
-
+<% end %>
 <% end %>
 <%= link_to t('documents.download'),  @document.file.url, class: "btn btn-default btn-lg" %>
 
 
 <% if signed_in? %>
-  <%= link_to t('documents.edit'), edit_document_path(@document), class: "btn btn-default btn-lg" %> 
+  <% if current_user.admin? %>
+    <%= link_to t('documents.edit'), edit_document_path(@document), class: "btn btn-default btn-lg" %> 
+  <% end %>
 <% end %>

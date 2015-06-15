@@ -12,10 +12,14 @@
       <th><%= t('documents.description')     %></th>
       <th><%= t('documents.published_year')  %></th>
       <th class="col-md-3" class="cell_of_buttons" >
-        <% if signed_in? %>
+
+    <% if signed_in? %>
+        <% if current_user.admin? %>
           <div id="btn-new-document">
             <%= link_to t('documents.new'), new_document_path, class: "btn btn-large btn-primary" %>
           </div>
+   
+        <% end %>
         <% end %>
       </th>
     </tr>

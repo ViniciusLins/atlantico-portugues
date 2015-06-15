@@ -17,10 +17,10 @@ describe "Documents" do
     it { should have_selector('h1', text: I18n.t('documents.title')) }
 
     describe "should have right links" do 
-      it { should have_link(I18n.t('documents.new'), href: new_document_path) } 
+      it { should_not have_link(I18n.t('documents.new'), href: new_document_path) } 
       it { should have_link(I18n.t('documents.show_link'), href: document_path(document)) } 
-      it { should have_link(I18n.t('documents.edit'),     href: edit_document_path(document)) } 
-      it { should have_link(I18n.t('documents.destroy')) } 
+      it { should_not have_link(I18n.t('documents.edit'),     href: edit_document_path(document)) } 
+      it { should_not have_link(I18n.t('documents.destroy')) } 
     end
 
     describe "should have right document contents" do
@@ -30,9 +30,7 @@ describe "Documents" do
     end
 
     describe "delete links" do
-      it "should be deleted document" do
-        expect { click_link I18n.t('documents.destroy') }.to change(Document, :count).by(-1)
-      end
+        it { should_not have_content(I18n.t('documents.destroy')) }
     end
   end
 

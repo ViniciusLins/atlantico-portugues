@@ -127,27 +127,27 @@ describe "Authentication" do
 
         describe "visiting edit" do
           before { visit edit_document_path(document) }
-          it { should have_title(I18n.t(:signin_title)) }
+            it { should have_title(I18n.t(:signin_title)) }
         end
 
         describe "when try destroy a document" do
           before { delete document_path(document) }
           specify "should redirect to signin" do
-           response.should redirect_to(signin_path) 
+            response.should redirect_to(signin_path)
           end
         end
 
         describe "when try create action a document" do
           before { post documents_path }
           specify "should redirect to signin" do
-           response.should redirect_to(signin_path) 
+            response.should redirect_to(signin_path)
           end
         end
 
         describe "when try update a document" do
           before { put document_path(document) }
           specify "should redirect to signin" do
-           response.should redirect_to(signin_path) 
+            response.should redirect_to(signin_path)
           end
         end
       end
@@ -270,4 +270,77 @@ describe "Authentication" do
       end
     end
   end
+
+  describe "when a non-admin logged-in user try to manipulate documents" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:document) { FactoryGirl.create(:document) }
+    before { sign_in user } 
+
+    describe "visiting index" do
+      before { visit documents_path }
+
+      it { should have_title(I18n.t('documents.title')) }
+      it { should_not have_link(I18n.t('documents.new')) }
+      it { should_not have_link(I18n.t('documents.edit')) }
+      it { should_not have_link(I18n.t('documents.destroy')) }
+    end
+
+    describe "visiting show" do
+      before { visit document_path(document) }
+      it { should have_title(document.title) }
+      it { should_not have_link(I18n.t('documents.new')) }
+      it { should_not have_link(I18n.t('documents.edit')) }
+      it { should_not have_link(I18n.t('documents.delete')) }
+    end
+
+    describe "visiting new" do
+      before { get new_document_path }
+       specify "should redirect to home" do
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "visiting edit" do
+      before { get edit_document_path(document.id) }
+      specify "should redirect to home" do
+        response.should redirect_to(root_path)
+      end
+    end
+
+
+    describe "when try destroy a document" do
+      before { delete document_path(document) }
+      specify "should redirect to home" do
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "when try create action a document" do
+      before { post documents_path }
+      specify "should redirect to home" do
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "when try update a document" do
+      before { put document_path(document) }
+      specify "should redirect to home" do
+        response.should redirect_to(root_path)
+      end
+    end
+  end
+
+  describe "as an admin user" do
+    let(:admin) { FactoryGirl.create(:admin, name: "Administrador") }
+    before do
+      sign_in admin
+      visit users_path
+    end
+
+    it "should not be able to delete himself" do
+      expect { delete user_path(admin.id) }.to_not change(User, :count).by(-1)
+    end
+  end
 end
+
+

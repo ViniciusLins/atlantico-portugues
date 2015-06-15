@@ -4,8 +4,6 @@ describe "Errors Pages" do
   subject { page }
 
   describe "errors" do
-    let(:non_admin) { FactoryGirl.create(:user) }
-    before { sign_in non_admin }
 
     describe "GET 'file_not_found'" do
       it "returns http success" do
