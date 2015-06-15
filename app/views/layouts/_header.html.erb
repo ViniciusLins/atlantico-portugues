@@ -17,7 +17,7 @@
         <li>
         <%= form_tag search_path, 
           { method: "get", class: "navbar-form", id: "search-form"}  do  %>
-          <div  class="input-group">
+          <div id="search-input"  class="input-group">
             <%= text_field_tag :search, params[:search], class: "form-control" %>
             <div class="input-group-btn">
               <button id="search" name="<%= t('home.btn-search') %>" type="submit"  

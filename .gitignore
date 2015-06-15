@@ -27,3 +27,4 @@ sunspot-solr.pid
 solr/development
 solr/pids/development/*.pid
 mangaba.txt.gpg
+doc/invoices
