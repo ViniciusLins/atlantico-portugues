@@ -323,27 +323,18 @@ describe "Authentication" do
     end
   end
 
-    describe "as admin user" do
-      let(:admin) { FactoryGirl.create(:admin, name: "Administrador") }
-      let(:admin_simple) { FactoryGirl.create(:admin) }
-
+  describe "as an admin user" do
+    let(:admin) { FactoryGirl.create(:admin, name: "Administrador") }
     before do
       sign_in admin
-      visit user_path(admin.id)
+      visit users_path
     end
 
-    it{ should have_content ("Todos os usuários") }
-
-      describe "submitting a delete request to the users#destroy action to undestructible user" do
-        it "should do not alter quantity of users" do
-       expect{delete user_path(admin.id)}.to_not change(User, :count).by(-1)
-        end
-      end
-
-        describe "submitting a delete request to the users#destroy action for non undestructible user" do
-        it "should alter quantity of users" do
-       expect{delete user_path(admin_simple.id)}.to change(User, :count)
-      end
-      end
+    it "should be able to delete another user" do
+#      expect { click_link(I18n.t('users.user.delete')) }.to change(User, :count).by(-1)
+      expect { delete user_path(admin.id) }.to_not change(User, :count).by(-1)
     end
+  end
 end
+
+
