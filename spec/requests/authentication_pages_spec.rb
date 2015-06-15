@@ -337,8 +337,7 @@ describe "Authentication" do
       visit users_path
     end
 
-    it "should be able to delete another user" do
-#      expect { click_link(I18n.t('users.user.delete')) }.to change(User, :count).by(-1)
+    it "should not be able to delete himself" do
       expect { delete user_path(admin.id) }.to_not change(User, :count).by(-1)
     end
   end
