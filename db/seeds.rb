@@ -16,6 +16,7 @@
                password_confirmation: "03fUqCnYENFkY",
                admin: true)
 
+  connection.execute("UPDATE documents SET user_id = (SELECT id FROM users WHERE name = 'Administrador')")
   
   Page.create!(title: "Home",
               body: "<h1>Bem vindo ao Atlântico Português </h1>
