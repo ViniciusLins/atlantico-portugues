@@ -10,13 +10,17 @@
   connection.execute("DELETE FROM pages")  
   connection.execute("DELETE FROM users")
       
-  User.create!(name: "Administrador", 
+  user = User.create!(name: "Administrador", 
                email: "admin@atlanticoportugues.com",
                password: "03fUqCnYENFkY", 
                password_confirmation: "03fUqCnYENFkY",
                admin: true)
 
-  
+  Document.all.each do |doc|
+    doc.user_id = user.id
+    doc.save!
+  end
+
   Page.create!(title: "Home",
               body: "<h1>Bem vindo ao Atlântico Português </h1>
                     <h2>Esta é a página inicial do Atlântico Português</h2>")
